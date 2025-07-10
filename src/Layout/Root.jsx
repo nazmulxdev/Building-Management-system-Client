@@ -1,10 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router";
+import NavBar from "../Components/NavBar";
+import "../index.css";
 
 const Root = () => {
   return (
-    <div>
-      <p>this is root layout</p>
+    <div className="min-h-screen flex flex-col">
+      <div className="sticky top-0 z-50">
+        <NavBar></NavBar>
+      </div>
+
       <Outlet></Outlet>
     </div>
   );

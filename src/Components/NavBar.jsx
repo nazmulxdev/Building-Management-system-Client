@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router";
 import { FaSignInAlt, FaBars } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
-import houseLogo from "../assets/home-logo.png";
+import WebLogo from "../Shared/WebLogo";
+import LogInButton from "../Shared/LogInButton";
+import LogOutButton from "../Shared/LogOutButton";
+import { FiLayout } from "react-icons/fi";
+import profilePic from "../assets/new-pic-for-profle.jpg";
 
 const NavBar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -12,9 +16,32 @@ const NavBar = () => {
   // Dummy user
   const user = {
     displayName: "John Doe",
-    photoURL: "/default-avatar.png",
+    photoURL: profilePic,
   };
-  //   const user = null;
+  // const user = null;
+
+  const navLinks = (
+    <>
+      <li>
+        <NavLink
+          className=" text-lg"
+          to="/"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className=" text-lg"
+          to="/apartment"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Apartment
+        </NavLink>
+      </li>
+    </>
+  );
 
   // Close dropdowns on outside click
   useEffect(() => {
@@ -31,69 +58,47 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="bg-secondary shadow shadow-base">
+    <div className="bg-base-200 shadow shadow-base-300">
       <div className="navbar max-w-screen mx-auto lg:px-20  px-2">
         {/* Left: Logo + Mobile Menu */}
-        <div className="flex-1 flex items-center gap-2">
+        <div className="flex-1 flex items-center">
           {/* Hamburger for mobile */}
           <div className="lg:hidden" ref={mobileRef}>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="btn btn-ghost btn-circle"
             >
-              <FaBars />
+              <FaBars className="text-primary" />
             </button>
             {isMobileMenuOpen && (
               <ul className="menu menu-sm absolute mt-2 p-2 shadow bg-base-100 rounded-box w-52 z-50">
-                <li>
-                  <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)}>
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/apartment"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Apartment
-                  </NavLink>
-                </li>
+                {navLinks}
               </ul>
             )}
           </div>
 
           {/* Logo + Title */}
-          <Link to="/" className="flex items-center gap-2 text-xl font-bold">
-            <img src={houseLogo} alt="Logo" className="w-8 h-8 text-rose-600" />
-            <span className="hidden sm:inline text-primary">My Building</span>
-          </Link>
+          <WebLogo></WebLogo>
         </div>
 
         {/* Right: Nav Links + Profile/Login */}
         <div className="flex-none flex items-center gap-4">
           {/* Desktop nav links */}
           <ul className="menu menu-horizontal px-1 hidden lg:flex gap-2">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/apartment">Apartment</NavLink>
-            </li>
+            {navLinks}
           </ul>
 
           {/* Auth/Profile section */}
           <div ref={profileRef}>
             {!user ? (
-              <Link to="/login" className="btn btn-sm btn-outline">
-                <FaSignInAlt className="text-lg" /> Login
-              </Link>
+              <LogInButton></LogInButton>
             ) : (
               <div className="relative">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="btn btn-ghost btn-circle avatar"
+                  className="btn btn-ghost btn-circle avatar w-16"
                 >
-                  <div className="w-10 rounded-full">
+                  <div className="w-full rounded-full">
                     <img src={user.photoURL} alt="Profile" />
                   </div>
                 </button>
@@ -103,14 +108,20 @@ const NavBar = () => {
                       {user.displayName}
                     </li>
                     <li>
-                      <Link to="/" onClick={() => setIsProfileOpen(false)}>
+                      <Link
+                        className="text-lg"
+                        to="/"
+                        onClick={() => setIsProfileOpen(false)}
+                      >
+                        <FiLayout></FiLayout>
                         Dashboard
                       </Link>
                     </li>
                     <li>
-                      <button onClick={() => setIsProfileOpen(false)}>
-                        Logout
-                      </button>
+                      <LogOutButton
+                        className={"text-lg font-normal"}
+                        onClick={() => setIsProfileOpen(false)}
+                      ></LogOutButton>
                     </li>
                   </ul>
                 )}

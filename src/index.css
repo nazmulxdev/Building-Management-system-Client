@@ -1,60 +1,52 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 * {
-  background-color: #f8fafc;
+  /* background-color: #f8fafc; */
+  font-family: "Inter", sans-serif;
 }
-
-@plugin "daisyui/theme" {
-  name: "urbanTech"; /* This is the name you'll use in data-theme="urbanTech" */
-
-  /* --- Core Colors You Specified --- */
-  --color-primary: #2563eb; /* Primary Blue for main actions */
-  --color-secondary: #4f46e5; /* Using the 'info' indigo as secondary. #1D4ED8 is better for hover. */
-  --color-accent: #f8d474; /* The gold color from your icon */
-
-  /* --- Base & Neutral Colors --- */
-  --color-neutral: #1e293b; /* Dark slate for neutral elements */
-  --color-base-100: #ffffff; /* Main content background (cards) */
-  --color-base-200: #f8fafc; /* Slightly darker background for the page */
-  --color-base-300: #e2e8f0; /* Borders and dividers */
-
-  /* --- Text Colors --- */
-  --color-text: #1e293b; /* Main text color (using our theme's primary text) */
-  --color-text-secondary: #64748b; /* Lighter text for subtitles */
-
-  /* --- Status Colors --- */
-  --color-info: #4f46e5; /* For informational alerts */
-  --color-success: #16a34a; /* For success states */
-  --color-warning: #f59e0b; /* For warnings or pending states */
-  --color-error: #dc2626; /* For errors and critical alerts */
-}
-
-
 
 /* --- Your NEW Deep Teal Theme --- */
 @plugin "daisyui/theme" {
-  name: "deepTeal"; /* This is the name for your new theme */
-  
+  name: "light";
+  default: true;
   /* --- Core Colors --- */
-  --color-primary: #004D40;        /* A rich, deep teal */
-  --color-secondary: #2563EB;      /* Using the blue from our last theme as a secondary color */
-  --color-accent: #f8d474;         /* The same gold accent color, which pairs nicely with teal */
-  
+  /* A rich, deep teal */
+  --color-primary: #004d40;
+  --color-primary-content: #ffffff;
+  /* Using the blue from our last theme as a secondary color */
+  --color-secondary: #2563eb;
+  /* The same gold accent color, which pairs nicely with teal */
+  --color-accent: #f8d474;
+
   /* --- Base & Neutral Colors --- */
-  --color-neutral: #1E293B;        /* Dark slate for neutral elements */
-  --color-base-100: #FFFFFF;       /* Main content background (cards) */
-  --color-base-200: #F8FAFC;       /* Slightly darker background for the page */
-  --color-base-300: #E2E8F0;       /* Borders and dividers */
-  
+  /* Dark slate for neutral elements */
+  --color-neutral: #1e293b;
+
+  /* Main content background (cards) */
+  --color-base-100: #ffffff;
+
+  /* Slightly darker background for the page */
+  --color-base-200: #f8fafc;
+
+  /* Borders and dividers */
+  --color-base-300: #e2e8f0;
+
   /* --- Text Colors --- */
-  --color-text: #1E293B;           /* Main text color */
-  --color-text-secondary: #64748B; /* Lighter text for subtitles */
-  
+  /* Main text color */
+  --color-text: #1e293b;
+  /* Lighter text for subtitles  */
+  --color-text-secondary: #64748b;
+
   /* --- Status Colors (remain consistent for user understanding) --- */
-  --color-info: #4F46E5;
-  --color-success: #16A34A;
-  --color-warning: #F59E0B;
-  --color-error: #DC2626;
+  --color-info: #4f46e5;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-error: #dc2626;
 }
 
+.active {
+  @apply font-bold text-primary;
+}

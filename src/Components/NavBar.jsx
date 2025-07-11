@@ -5,20 +5,15 @@ import WebLogo from "../Shared/WebLogo";
 import LogInButton from "../Shared/LogInButton";
 import LogOutButton from "../Shared/LogOutButton";
 import { FiLayout } from "react-icons/fi";
-import profilePic from "../assets/new-pic-for-profle.jpg";
+import useAuth from "../Hooks/useAuth";
 
 const NavBar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const profileRef = useRef(null);
   const mobileRef = useRef(null);
-
-  // Dummy user
-  const user = {
-    displayName: "John Doe",
-    photoURL: profilePic,
-  };
-  // const user = null;
+  const { currentUser: user } = useAuth();
+  console.log(user?.photoURL);
 
   const navLinks = (
     <>
@@ -99,12 +94,12 @@ const NavBar = () => {
                   className="btn btn-ghost btn-circle avatar w-16"
                 >
                   <div className="w-full rounded-full">
-                    <img src={user.photoURL} alt="Profile" />
+                    <img src={user?.photoURL} alt="Profile" />
                   </div>
                 </button>
                 {isProfileOpen && (
                   <ul className="menu absolute right-0 mt-2 p-3 shadow bg-base-100 rounded-box w-52 z-50">
-                    <li className="pointer-events-none text-lg font-bold">
+                    <li className="pointer-events-none text-lg font-bold text-primary">
                       {user.displayName}
                     </li>
                     <li>

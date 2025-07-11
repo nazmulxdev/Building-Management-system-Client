@@ -17,7 +17,7 @@ const LogInButton = () => (
       <circle cx="12" cy="6" r="4" />
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
     </svg>
-    {/* <span className="ml-2">Login</span> */}
+    <span className="ml-2">Login</span>
   </Link>
 );
 export default LogInButton;

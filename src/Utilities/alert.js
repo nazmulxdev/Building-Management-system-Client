@@ -14,5 +14,6 @@ export const sweetError = (message) => {
     icon: "error",
     title: "Oops...",
     text: `${message}`,
+    confirmButtonColor: "#004d40",
   });
 };

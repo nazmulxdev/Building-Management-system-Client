@@ -114,7 +114,11 @@ const LoginPage = () => {
         {/* Register Link */}
         <p className="text-center text-text-secondary">
           Don't have an account?{" "}
-          <Link to="/auth/register" className="link link-accent">
+          <Link
+            state={location.state}
+            to="/auth/register"
+            className="link link-accent"
+          >
             Register
           </Link>
         </p>

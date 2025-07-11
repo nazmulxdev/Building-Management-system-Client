@@ -6,6 +6,7 @@ import AuthLayout from "../Layout/AuthLayout";
 import LoginPage from "../Pages/LogIn/LoginPage";
 import RegisterPage from "../Pages/Register/RegisterPage";
 import Apartment from "../Pages/Apartment/Apartment";
+import PrivateRoutes from "../Routes/PrivateRoutes";
 
 const Router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/apartment",
-        Component: Apartment,
+        element: (
+          <PrivateRoutes>
+            <Apartment></Apartment>
+          </PrivateRoutes>
+        ),
       },
     ],
   },

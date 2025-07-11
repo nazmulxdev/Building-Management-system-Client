@@ -1,21 +1,41 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLoginButton from "../../Shared/SocialLoginButton";
+import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
+import LoadingSpinner from "../../Utilities/LoadingSpinner";
+import { sweetError, sweetSuccess } from "../../Utilities/alert";
 
 const LoginPage = () => {
+  const { signInEmailPassword, setCurrentUser } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    // Will be implemented later
-    console.log(data);
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const userCredential = await signInEmailPassword(
+        data.email,
+        data.password,
+      );
+      setCurrentUser(userCredential.user);
+      sweetSuccess("You have logged in successfully");
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      sweetError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <>
+    <LoadingSpinner isLoading={loading}>
       <h2 className="text-2xl font-bold text-center mb-6 text-primary">
         Login to Your Account
       </h2>
@@ -68,6 +88,10 @@ const LoginPage = () => {
                 value: 6,
                 message: "Password must be at least 6 characters",
               },
+              pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
+                message: "Must contain uppercase and lowercase letters",
+              },
             })}
           />
           {errors.password && (
@@ -77,14 +101,6 @@ const LoginPage = () => {
               </span>
             </label>
           )}
-          <label className="label">
-            <Link
-              to="/forgot-password"
-              className="label-text-alt link link-accent"
-            >
-              Forgot password?
-            </Link>
-          </label>
         </div>
 
         {/* Submit Button */}
@@ -103,7 +119,7 @@ const LoginPage = () => {
           </Link>
         </p>
       </form>
-    </>
+    </LoadingSpinner>
   );
 };
 

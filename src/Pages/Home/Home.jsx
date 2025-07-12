@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useRole from "../../Hooks/useRole";
+import LoadingSpinner from "../../Utilities/LoadingSpinner";
 const Home = () => {
-  const axiosSecure = useAxiosSecure();
-  useEffect(() => {
-    axiosSecure.get("/api/apartments").then((data) => {
-      console.log(data.data);
-    });
-  }, [axiosSecure]);
+  // const axiosSecure = useAxiosSecure();
+  const { role, roleLoading } = useRole();
+  if (roleLoading) {
+    return <LoadingSpinner isLoading={true}></LoadingSpinner>;
+  }
+  console.log(role);
+
   return (
     <div>
       <p className="font-bold text-accent">

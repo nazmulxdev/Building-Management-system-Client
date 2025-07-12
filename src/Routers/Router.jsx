@@ -19,11 +19,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/apartment",
-        element: (
-          <PrivateRoutes>
-            <Apartment></Apartment>
-          </PrivateRoutes>
-        ),
+        element: <Apartment></Apartment>,
       },
     ],
   },

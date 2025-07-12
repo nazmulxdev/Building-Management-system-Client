@@ -13,8 +13,6 @@ const NavBar = () => {
   const profileRef = useRef(null);
   const mobileRef = useRef(null);
   const { currentUser: user } = useAuth();
-  console.log(user?.photoURL);
-
   const navLinks = (
     <>
       <li>

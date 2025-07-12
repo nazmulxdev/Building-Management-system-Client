@@ -11,7 +11,7 @@ const Root = () => {
         <NavBar></NavBar>
       </div>
 
-      <div className="flex-grow max-w-screen-2xl mx-auto w-full">
+      <div className="flex-grow  w-full">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useRole from "../../Hooks/useRole";
 import LoadingSpinner from "../../Utilities/LoadingSpinner";
+import HomeBanner from "./HomeBanner";
 const Home = () => {
   // const axiosSecure = useAxiosSecure();
   const { role, roleLoading } = useRole();
@@ -12,9 +11,7 @@ const Home = () => {
 
   return (
     <div>
-      <p className="font-bold text-accent">
-        this is home page of the root layout
-      </p>
+      <HomeBanner></HomeBanner>
     </div>
   );
 };

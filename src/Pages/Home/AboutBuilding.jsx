@@ -17,7 +17,7 @@ const AboutBuilding = () => {
   const buildingDetails = {
     name: "The Haven Towers",
     yearBuilt: 2023,
-    architect: "Studio Moderna Architects",
+    architect: "Studio Modern Architects",
     description:
       "A 30-floor architectural marvel housing 240 luxury apartments across 4 blocks. Our building combines sustainable design with premium urban living.",
     structure: [
@@ -61,10 +61,8 @@ const AboutBuilding = () => {
             Discover the vision behind {buildingDetails.name}
           </p>
         </motion.div>
-
-        {/* Content Grid - Equal Height Columns */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {/* Left Column - Image (now with fixed aspect ratio) */}
+          {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -85,7 +83,7 @@ const AboutBuilding = () => {
             </div>
           </motion.div>
 
-          {/* Right Column - Details (now matching image height) */}
+          {/* Right Column*/}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}

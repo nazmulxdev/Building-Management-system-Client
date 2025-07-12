@@ -99,7 +99,7 @@ const HomeBanner = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
               >
-                <button className="btn btn-primary btn-lg rounded-full px-8 text-white hover:bg-accent transition-all">
+                <button className="btn btn-primary btn-lg rounded-full px-8 text-white hover:bg-accent hover:border-0 transition-all">
                   Explore Apartments
                 </button>
               </motion.div>

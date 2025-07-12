@@ -1,6 +1,7 @@
 import useRole from "../../Hooks/useRole";
 import LoadingSpinner from "../../Utilities/LoadingSpinner";
 import AboutBuilding from "./AboutBuilding";
+import CouponBanner from "./CouponBanner";
 import HomeBanner from "./HomeBanner";
 const Home = () => {
   // const axiosSecure = useAxiosSecure();
@@ -13,6 +14,7 @@ const Home = () => {
   return (
     <div>
       <HomeBanner></HomeBanner>
+      <CouponBanner></CouponBanner>
       <AboutBuilding></AboutBuilding>
     </div>
   );

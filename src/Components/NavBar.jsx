@@ -103,7 +103,7 @@ const NavBar = () => {
                     <li>
                       <Link
                         className="text-lg"
-                        to="/"
+                        to="/dashboard"
                         onClick={() => setIsProfileOpen(false)}
                       >
                         <FiLayout></FiLayout>

@@ -203,9 +203,9 @@ const Apartment = () => {
                       {/* Action Button */}
                       <Link
                         to={`/apartment/${apartment._id}`}
-                        className="btn btn-primary btn-sm w-full gap-2 hover:bg-accent transition-colors"
+                        className="btn btn-primary btn-sm w-full gap-2 transition-colors"
                       >
-                        <FaFileSignature /> View Details
+                        <FaFileSignature /> Book Naw
                       </Link>
                     </div>
                   </motion.div>

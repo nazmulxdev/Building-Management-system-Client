@@ -7,6 +7,8 @@ import LoginPage from "../Pages/LogIn/LoginPage";
 import RegisterPage from "../Pages/Register/RegisterPage";
 import Apartment from "../Pages/Apartment/Apartment";
 import PrivateRoutes from "../Routes/PrivateRoutes";
+import Dashboard from "../Layout/Dashboard";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +22,16 @@ const Router = createBrowserRouter([
       {
         path: "/apartment",
         element: <Apartment></Apartment>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    Component: Dashboard,
+    children: [
+      {
+        index: true,
+        Component: DashboardHome,
       },
     ],
   },

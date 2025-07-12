@@ -5,10 +5,12 @@ import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import LoadingSpinner from "../../Utilities/LoadingSpinner";
 import { sweetError, sweetSuccess } from "../../Utilities/alert";
+import useAxios from "../../Hooks/useAxios";
 
 const LoginPage = () => {
   const { signInEmailPassword, setCurrentUser } = useAuth();
   const [loading, setLoading] = useState(false);
+  const axiosInstance = useAxios();
   const location = useLocation();
   const navigate = useNavigate();
   const {
@@ -24,7 +26,13 @@ const LoginPage = () => {
         data.email,
         data.password,
       );
-      setCurrentUser(userCredential.user);
+      const userData = userCredential.user;
+      const userInfo = {
+        email: userData.email,
+      };
+      const userResponse = await axiosInstance.post("/api/users", userInfo);
+      console.log(userResponse.data);
+      setCurrentUser(userData);
       sweetSuccess("You have logged in successfully");
       navigate(location?.state ? location.state : "/");
     } catch (error) {

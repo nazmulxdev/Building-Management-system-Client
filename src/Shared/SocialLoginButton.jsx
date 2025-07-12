@@ -3,15 +3,28 @@ import useAuth from "../Hooks/useAuth";
 import { sweetSuccess } from "../Utilities/alert";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import { useState } from "react";
+import useAxios from "../Hooks/useAxios";
 const SocialLoginButton = () => {
   const { signInGoogle, setCurrentUser } = useAuth();
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosInstance = useAxios();
   const handleSignInByGoogle = () => {
     setLoading(true);
-    signInGoogle().then((user) => {
-      setCurrentUser(user.user);
+    signInGoogle().then(async (user) => {
+      const userDetails = user.user;
+      const userData = {
+        name: userDetails.displayName,
+        email: userDetails.email,
+        role: "user",
+        createdAt: new Date().toISOString(),
+        lastLogIn: new Date().toISOString(),
+      };
+
+      const userResponse = await axiosInstance.post("/api/users", userData);
+      console.log(userResponse.data);
+      setCurrentUser(userDetails);
       setLoading(false);
       sweetSuccess("You have Logged in successfully");
       navigate(location?.state ? location.state : "/");

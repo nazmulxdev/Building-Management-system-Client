@@ -3,14 +3,17 @@ import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import { sweetSuccess } from "../Utilities/alert";
+import useAxios from "../Hooks/useAxios";
 
 const LogOutButton = ({ onClick, className = "" }) => {
   const navigate = useNavigate();
+  const axiosInstance = useAxios();
   const { logOutUser } = useAuth();
 
   const handleLogOut = async () => {
     try {
-      logOutUser().then(() => {
+      logOutUser().then(async () => {
+        await axiosInstance.post("/api/logout", {}, { withCredentials: true });
         sweetSuccess("You have logged out successfully");
         navigate("/");
       });

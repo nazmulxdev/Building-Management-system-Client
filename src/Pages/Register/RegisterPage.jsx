@@ -39,7 +39,22 @@ const RegisterPage = () => {
         password: data.password,
         profilePhoto: imageUrl,
       };
-      registerUser(userData.email, userData.password).then(() => {
+      registerUser(userData.email, userData.password).then(async () => {
+        // add users data in the database
+        const userDetails = {
+          name: data.name,
+          email: data.email,
+          role: "user",
+          createdAt: new Date().toISOString(),
+          lastLogIn: new Date().toISOString(),
+        };
+        const userResponse = await axiosInstance.post(
+          "/api/users",
+          userDetails,
+        );
+        console.log(userResponse.data);
+
+        // updating user profile in the firebase
         updateUser({
           displayName: userData.name,
           photoURL: userData.profilePhoto,

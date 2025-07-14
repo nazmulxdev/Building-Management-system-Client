@@ -78,17 +78,31 @@ const Apartment = () => {
     // checking if user already has an agreement
     try {
       const { isConfirmed } = await Swal.fire({
-        title: "Confirm Agreement",
+        title: "Confirm Apartment Agreement",
         html: `
-        <p>You're applying for:</p>
-        <p><strong>Block: ${apartment.block}<br> Floor No: ${apartment.floor}<br> Apartment No: ${apartment.apartmentNo}</strong></p>
-        <p>Rent: $ ${apartment.rent}</p>
-      `,
+    <div style="text-align: left;">
+      <p>You're applying for:</p>
+      <ul style="line-height: 1.6;">
+        <li><strong>Block:</strong> ${apartment.block}</li>
+        <li><strong>Floor No:</strong> ${apartment.floor}</li>
+        <li><strong>Apartment No:</strong> ${apartment.apartmentNo}</li>
+        <li><strong>Size:</strong> ${apartment.size} sqft</li>
+        <li><strong>Bedrooms:</strong> ${apartment.bedrooms}</li>
+        <li><strong>Bathrooms:</strong> ${apartment.bathrooms}</li>
+        <li><strong>Status:</strong> ${apartment.status}</li>
+        <li><strong>Rent:</strong> $${apartment.rent}</li>
+      </ul>
+      <p><strong>Description:</strong> ${apartment.description}</p>
+      <img src="${apartment.image}" alt="Apartment Image" style="width: 100%; margin-top: 10px; border-radius: 10px;" />
+    </div>
+  `,
         icon: "question",
         showCancelButton: true,
-        confirmButtonText: "Confirm Application",
+        confirmButtonText: "Confirm Agreement",
+        confirmButtonColor: "#004d40",
         cancelButtonText: "Cancel",
         reverseButtons: true,
+        width: 500,
       });
       if (isConfirmed) {
         const response = await axiosSecure.post("/api/agreement", {
@@ -96,7 +110,11 @@ const Apartment = () => {
         });
         refetch();
 
-        Swal.fire("Success!", response.data.message, "success");
+        Swal.fire(
+          "Success!",
+          response.data.message,
+          "Congratulations, your agreement has been submitted successfully. Please be patience for confirmation",
+        );
       }
     } catch (error) {
       Swal.fire("Error!", error.response?.data?.message || "Failed", "error");
@@ -255,9 +273,17 @@ const Apartment = () => {
                       {/* Action Button */}
                       <button
                         onClick={() => handleAgreement(apartment)}
-                        className="btn btn-primary btn-sm w-full gap-2 transition-colors"
+                        disabled={apartment.status !== "available"}
+                        className={`btn btn-primary btn-sm w-full gap-2 transition-colors ${
+                          apartment.status !== "available"
+                            ? "bg-accent text-primary"
+                            : ""
+                        }`}
                       >
-                        <FaFileSignature /> Agreement Naw
+                        <FaFileSignature /> $
+                        {apartment.status === "available"
+                          ? "Agreement Now"
+                          : "Not Available"}
                       </button>
                     </div>
                   </motion.div>

@@ -38,7 +38,7 @@ const useAxiosSecure = () => {
               {},
               { withCredentials: true },
             );
-            navigate("/logout", { state: location.pathname, replace: true });
+            navigate("/auth/login", { state: location.pathname, replace: true });
           } catch {
             console.log(error);
           }
@@ -58,7 +58,27 @@ const useAxiosSecure = () => {
               {},
               { withCredentials: true },
             );
-            navigate("/logout", { state: location.pathname, replace: true });
+            navigate("/auth/login", { state: location.pathname, replace: true });
+          } catch (error) {
+            console.log("Logout failed", error);
+          }
+        }
+        if (errorStatus === 404) {
+          await Swal.fire({
+            icon: "warning",
+            title: "Forbidden access.",
+            text: "Your access token is corrupted. Please, login again.",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#004d40",
+          });
+          try {
+            await logOutUser();
+            await axiosInstance.post(
+              "/api/logout",
+              {},
+              { withCredentials: true },
+            );
+            navigate("/auth/login", { state: location.pathname, replace: true });
           } catch (error) {
             console.log("Logout failed", error);
           }

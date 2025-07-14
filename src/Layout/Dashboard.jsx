@@ -1,12 +1,138 @@
 import { Link, NavLink, Outlet } from "react-router";
 import WebLogo from "../Shared/WebLogo";
 import LogOutButton from "../Shared/LogOutButton";
+import {
+  FaUser,
+  FaCog,
+  FaMoneyBillWave,
+  FaHistory,
+  FaUserShield,
+  FaUsersCog,
+  FaBullhorn,
+  FaFileContract,
+  FaTicketAlt,
+} from "react-icons/fa";
 
 const Dashboard = () => {
   const closeDrawer = () => {
     const drawerCheckbox = document.getElementById("my-drawer");
     if (drawerCheckbox) drawerCheckbox.checked = false;
   };
+
+  const usersLinks = (
+    <>
+      <li>
+        <NavLink
+          to="/dashboard/user-profile"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaUser className="text-lg" />
+          <span>My Profile(users) </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/management"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaCog className="text-lg" />
+          <span>Settings</span>
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const membersLinks = (
+    <>
+      <li>
+        <NavLink
+          to="/dashboard/management"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaUser className="text-lg" />
+          <span>My Profile (members)</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/make-payment"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaMoneyBillWave className="text-lg" />
+          <span>Make Payment</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/payment-history"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaHistory className="text-lg" />
+          <span>Payment History</span>
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const adminLinks = (
+    <>
+      <li>
+        <NavLink
+          to="/dashboard/admin-profile"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaUserShield className="text-lg" />
+          <span>Admin Profile</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/manage-members"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaUsersCog className="text-lg" />
+          <span>Manage Members</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/make-announcement"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaBullhorn className="text-lg" />
+          <span>Make Announcement</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/agreement-requests"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaFileContract className="text-lg" />
+          <span>Agreement Requests</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/manage-coupons"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaTicketAlt className="text-lg" />
+          <span>Manage Coupons</span>
+        </NavLink>
+      </li>
+    </>
+  );
 
   return (
     <div className="drawer lg:drawer-open">
@@ -61,26 +187,9 @@ const Dashboard = () => {
 
           {/* Navigation Links */}
           <ul className="px-2 py-4 flex-1">
-            <li>
-              <NavLink to="/dashboard" onClick={closeDrawer}>
-                Dashboard
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/management" onClick={closeDrawer}>
-                Management
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/users" onClick={closeDrawer}>
-                Users
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/members" onClick={closeDrawer}>
-                Members
-              </NavLink>
-            </li>
+            {usersLinks}
+            {membersLinks}
+            {adminLinks}
           </ul>
           <div className="divider h-0.5 bg-primary my-0" />
           <div className="p-4">

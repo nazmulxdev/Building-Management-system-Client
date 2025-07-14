@@ -1,4 +1,3 @@
-import React from "react";
 import { createBrowserRouter } from "react-router";
 import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
@@ -6,9 +5,11 @@ import AuthLayout from "../Layout/AuthLayout";
 import LoginPage from "../Pages/LogIn/LoginPage";
 import RegisterPage from "../Pages/Register/RegisterPage";
 import Apartment from "../Pages/Apartment/Apartment";
-import PrivateRoutes from "../Routes/PrivateRoutes";
 import Dashboard from "../Layout/Dashboard";
-import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
+import ErrorPage from "../404-Error-Pages/ErrorPage";
+import ManageMembers from "../Pages/Dashboard/Admin/ManageMembers";
+import UserProfile from "../Pages/Dashboard/Users/UserProfile";
 
 const Router = createBrowserRouter([
   {
@@ -31,7 +32,16 @@ const Router = createBrowserRouter([
     children: [
       {
         index: true,
+        path: "/dashboard/my-profile",
         Component: DashboardHome,
+      },
+      {
+        path: "/dashboard/user-profile",
+        Component: UserProfile,
+      },
+      {
+        path: "/dashboard/manage-members",
+        Component: ManageMembers,
       },
     ],
   },
@@ -48,6 +58,10 @@ const Router = createBrowserRouter([
         Component: RegisterPage,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: ErrorPage,
   },
 ]);
 

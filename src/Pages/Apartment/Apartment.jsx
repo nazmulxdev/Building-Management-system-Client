@@ -15,10 +15,12 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Apartment = () => {
   const [activePage, setActivePage] = useState(1);
   const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const [minRent, setMinRent] = useState("");
   const [maxRent, setMaxRent] = useState("");
   const [appliedRentRange, setAppliedRentRange] = useState({
@@ -28,7 +30,7 @@ const Apartment = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["apartments", activePage, appliedRentRange],
     queryFn: async () => {
       const res = await axiosInstance.get(
@@ -55,7 +57,7 @@ const Apartment = () => {
     setActivePage(1);
   };
 
-  const handleAgreement = async () => {
+  const handleAgreement = async (apartment) => {
     if (!currentUser) {
       const clickedButton = await Swal.fire({
         title: "Login Required",
@@ -72,6 +74,32 @@ const Apartment = () => {
         });
       }
       return;
+    }
+    // checking if user already has an agreement
+    try {
+      const { isConfirmed } = await Swal.fire({
+        title: "Confirm Agreement",
+        html: `
+        <p>You're applying for:</p>
+        <p><strong>Block: ${apartment.block}<br> Floor No: ${apartment.floor}<br> Apartment No: ${apartment.apartmentNo}</strong></p>
+        <p>Rent: $ ${apartment.rent}</p>
+      `,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Confirm Application",
+        cancelButtonText: "Cancel",
+        reverseButtons: true,
+      });
+      if (isConfirmed) {
+        const response = await axiosSecure.post("/api/agreement", {
+          apartmentId: apartment._id,
+        });
+        refetch();
+
+        Swal.fire("Success!", response.data.message, "success");
+      }
+    } catch (error) {
+      Swal.fire("Error!", error.response?.data?.message || "Failed", "error");
     }
   };
 
@@ -226,7 +254,7 @@ const Apartment = () => {
 
                       {/* Action Button */}
                       <button
-                        onClick={handleAgreement}
+                        onClick={() => handleAgreement(apartment)}
                         className="btn btn-primary btn-sm w-full gap-2 transition-colors"
                       >
                         <FaFileSignature /> Agreement Naw

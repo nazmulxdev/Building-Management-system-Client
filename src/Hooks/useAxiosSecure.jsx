@@ -15,18 +15,18 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const axiosInstance = useAxios();
+
   useEffect(() => {
     const interceptor = axiosSecure.interceptors.response.use(
-      (config) => {
-        return config;
-      },
+      (response) => response,
       async (error) => {
-        const errorStatus = error?.response.status;
-        if (errorStatus === 401) {
+        const status = error?.response?.status;
+
+        const handleLogout = async (msg) => {
           await Swal.fire({
             icon: "warning",
-            title: "Session expired",
-            text: "Please login again to continue.",
+            title: msg.title,
+            text: msg.text,
             confirmButtonText: "OK",
             confirmButtonColor: "#004d40",
           });
@@ -38,55 +38,37 @@ const useAxiosSecure = () => {
               {},
               { withCredentials: true },
             );
-            navigate("/auth/login", { state: location.pathname, replace: true });
-          } catch {
-            console.log(error);
+            navigate("/auth/login", {
+              state: location.pathname,
+              replace: true,
+            });
+          } catch (err) {
+            console.error("Logout failed", err);
           }
-        }
-        if (errorStatus === 403) {
-          await Swal.fire({
-            icon: "warning",
+        };
+
+        if (status === 401) {
+          await handleLogout({
+            title: "Session expired",
+            text: "Please login again to continue.",
+          });
+        } else if (status === 403) {
+          await handleLogout({
             title: "Forbidden access.",
             text: "This route is only for admins.",
-            confirmButtonText: "OK",
-            confirmButtonColor: "#004d40",
           });
-          try {
-            await logOutUser();
-            await axiosInstance.post(
-              "/api/logout",
-              {},
-              { withCredentials: true },
-            );
-            navigate("/auth/login", { state: location.pathname, replace: true });
-          } catch (error) {
-            console.log("Logout failed", error);
-          }
-        }
-        if (errorStatus === 404) {
-          await Swal.fire({
-            icon: "warning",
-            title: "Forbidden access.",
-            text: "Your access token is corrupted. Please, login again.",
-            confirmButtonText: "OK",
-            confirmButtonColor: "#004d40",
+        } else if (status === 404) {
+          await handleLogout({
+            title: "Invalid token",
+            text: "Your access token is corrupted. Please login again.",
           });
-          try {
-            await logOutUser();
-            await axiosInstance.post(
-              "/api/logout",
-              {},
-              { withCredentials: true },
-            );
-            navigate("/auth/login", { state: location.pathname, replace: true });
-          } catch (error) {
-            console.log("Logout failed", error);
-          }
         }
+
         return Promise.reject(error);
       },
     );
-    return () => axios.interceptors.response.eject(interceptor);
+
+    return () => axiosSecure.interceptors.response.eject(interceptor);
   }, [axiosInstance, location, navigate, logOutUser]);
 
   return axiosSecure;

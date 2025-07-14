@@ -65,7 +65,8 @@ const AgreementRequest = () => {
     }
   };
 
-  if (isLoading) return <LoadingSpinner isLoading={isLoading} />;
+  if (isLoading)
+    return <LoadingSpinner isLoading={isLoading} size="xl" fullScreen />;
 
   if (isError) {
     console.error("Error loading agreements:", error);
@@ -165,7 +166,7 @@ const AgreementRequest = () => {
             {/* Table Header - Hidden on mobile */}
             <thead className="bg-base-200 hidden sm:table-header-group">
               <tr>
-                <th>User</th>
+                <th>Applicant</th>
                 <th>Details</th>
                 <th className="text-right">Rent</th>
                 <th>Request Date</th>

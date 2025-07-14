@@ -8,7 +8,13 @@ import MemberProfile from "../Members/MemberProfile";
 const DashboardHome = () => {
   const { data, roleLoading } = useRole();
   if (roleLoading) {
-    return <LoadingSpinner isLoading={roleLoading}></LoadingSpinner>;
+    return (
+      <LoadingSpinner
+        isLoading={roleLoading}
+        fullScreen
+        size="xl"
+      ></LoadingSpinner>
+    );
   }
   if (data?.role === "user") {
     return <UserProfile></UserProfile>;

@@ -43,7 +43,7 @@ const LoginPage = () => {
   };
 
   return (
-    <LoadingSpinner isLoading={loading}>
+    <LoadingSpinner isLoading={loading} size="xl">
       <h2 className="text-2xl font-bold text-center mb-6 text-primary">
         Login to Your Account
       </h2>

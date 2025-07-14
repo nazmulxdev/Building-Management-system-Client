@@ -44,7 +44,6 @@ const RegisterPage = () => {
         const userDetails = {
           name: data.name,
           email: data.email,
-          profilePhoto: imageUrl,
           role: "user",
           createdAt: new Date().toISOString(),
           lastLogIn: new Date().toISOString(),
@@ -77,7 +76,7 @@ const RegisterPage = () => {
   const password = watch("password");
 
   return (
-    <LoadingSpinner isLoading={loading}>
+    <LoadingSpinner isLoading={loading} size="xl">
       <>
         <h2 className="text-2xl font-bold text-center mb text-primary">
           Create New Account

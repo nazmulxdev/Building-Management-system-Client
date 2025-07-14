@@ -17,7 +17,6 @@ const SocialLoginButton = () => {
       const userData = {
         name: userDetails.displayName,
         email: userDetails.email,
-        profilePhoto: userDetails.photoURL,
         role: "user",
         createdAt: new Date().toISOString(),
         lastLogIn: new Date().toISOString(),
@@ -32,7 +31,7 @@ const SocialLoginButton = () => {
     });
   };
   return (
-    <LoadingSpinner isLoading={loading}>
+    <LoadingSpinner isLoading={loading} size="xl">
       <div>
         <div className="divider text-text-secondary">OR</div>
 

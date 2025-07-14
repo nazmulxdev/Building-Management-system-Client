@@ -11,8 +11,10 @@ import {
   FaChevronRight,
   FaSearch,
 } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { motion } from "framer-motion";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Apartment = () => {
   const [activePage, setActivePage] = useState(1);
@@ -23,7 +25,9 @@ const Apartment = () => {
     min: null,
     max: null,
   });
-
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { data, isLoading } = useQuery({
     queryKey: ["apartments", activePage, appliedRentRange],
     queryFn: async () => {
@@ -49,6 +53,26 @@ const Apartment = () => {
     setMaxRent("");
     setAppliedRentRange({ min: null, max: null });
     setActivePage(1);
+  };
+
+  const handleAgreement = async () => {
+    if (!currentUser) {
+      const clickedButton = await Swal.fire({
+        title: "Login Required",
+        text: "You need to login to make an agreement",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#004d40",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Go to Login",
+      });
+      if (clickedButton.isConfirmed) {
+        navigate("/auth/login", {
+          state: location.pathname,
+        });
+      }
+      return;
+    }
   };
 
   return (
@@ -201,12 +225,12 @@ const Apartment = () => {
                       </p>
 
                       {/* Action Button */}
-                      <Link
-                        to={`/apartment/${apartment._id}`}
+                      <button
+                        onClick={handleAgreement}
                         className="btn btn-primary btn-sm w-full gap-2 transition-colors"
                       >
-                        <FaFileSignature /> Book Naw
-                      </Link>
+                        <FaFileSignature /> Agreement Naw
+                      </button>
                     </div>
                   </motion.div>
                 ))}

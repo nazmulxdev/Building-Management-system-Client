@@ -84,7 +84,7 @@ const Dashboard = () => {
           </ul>
           <div className="divider h-0.5 bg-primary my-0" />
           <div className="p-4">
-            <LogOutButton className="hover:btn-primary" />
+            <LogOutButton className="text-primary hover:btn-primary hover:text-primary-content" />
           </div>
         </div>
       </div>

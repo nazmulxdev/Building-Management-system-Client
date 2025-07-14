@@ -44,6 +44,7 @@ const RegisterPage = () => {
         const userDetails = {
           name: data.name,
           email: data.email,
+          profilePhoto: imageUrl,
           role: "user",
           createdAt: new Date().toISOString(),
           lastLogIn: new Date().toISOString(),

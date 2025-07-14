@@ -17,6 +17,7 @@ const SocialLoginButton = () => {
       const userData = {
         name: userDetails.displayName,
         email: userDetails.email,
+        profilePhoto: userDetails.photoURL,
         role: "user",
         createdAt: new Date().toISOString(),
         lastLogIn: new Date().toISOString(),

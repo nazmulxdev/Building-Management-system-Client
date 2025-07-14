@@ -10,6 +10,7 @@ import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import ErrorPage from "../404-Error-Pages/ErrorPage";
 import ManageMembers from "../Pages/Dashboard/Admin/ManageMembers";
 import UserProfile from "../Pages/Dashboard/Users/UserProfile";
+import AgreementRequest from "../Pages/Dashboard/Admin/AgreementRequest";
 
 const Router = createBrowserRouter([
   {
@@ -39,8 +40,8 @@ const Router = createBrowserRouter([
         Component: UserProfile,
       },
       {
-        path: "/dashboard/manage-members",
-        Component: ManageMembers,
+        path: "/dashboard/agreement-requests",
+        Component: AgreementRequest,
       },
     ],
   },

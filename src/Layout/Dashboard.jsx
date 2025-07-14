@@ -23,16 +23,6 @@ const Dashboard = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard"
-          onClick={closeDrawer}
-          className="flex items-center gap-2 font-semibold"
-        >
-          <FaUser className="text-lg" />
-          <span>My Profile(users) </span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
           to="/dashboard/management"
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
@@ -46,16 +36,6 @@ const Dashboard = () => {
 
   const membersLinks = (
     <>
-      <li>
-        <NavLink
-          to="/dashboard/management"
-          onClick={closeDrawer}
-          className="flex items-center gap-2 font-semibold"
-        >
-          <FaUser className="text-lg" />
-          <span>My Profile (members)</span>
-        </NavLink>
-      </li>
       <li>
         <NavLink
           to="/dashboard"
@@ -84,6 +64,7 @@ const Dashboard = () => {
       <li>
         <NavLink
           to="/dashboard"
+          end
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
         >
@@ -187,6 +168,17 @@ const Dashboard = () => {
 
           {/* Navigation Links */}
           <ul className="px-2 py-4 flex-1">
+            <li>
+              <NavLink
+                to="/dashboard"
+                end
+                onClick={closeDrawer}
+                className="flex items-center gap-2 font-semibold"
+              >
+                <FaUser className="text-lg" />
+                <span>My Profile(users) </span>
+              </NavLink>
+            </li>
             {usersLinks}
             {membersLinks}
             {adminLinks}

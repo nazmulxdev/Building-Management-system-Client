@@ -2,9 +2,13 @@ import {
   FaUser,
   FaEnvelope,
   FaCalendarAlt,
-  FaInfoCircle,
+  FaBuilding,
+  FaLayerGroup,
+  FaHashtag,
+  FaFileSignature,
+  FaMoneyBillWave,
 } from "react-icons/fa";
-import { MdApartment } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
 import LoadingSpinner from "../../../Utilities/LoadingSpinner";
 import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
@@ -21,9 +25,9 @@ const UserProfile = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="max-w-4xl mx-auto p-4 md:p-6"
+      className="max-w-screen-2xl mx-auto p-4 md:p-6"
     >
-      {/* header */}
+      {/* Profile Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-3">
@@ -31,7 +35,7 @@ const UserProfile = () => {
             <span>My Profile</span>
           </h1>
           <p className="text-sm text-gray-500 mt-1">
-            View and manage your account information
+            View your account and apartment information
           </p>
         </div>
         <div className="badge badge-primary badge-lg gap-2 px-4 py-3">
@@ -42,11 +46,11 @@ const UserProfile = () => {
 
       {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Profile information */}
+        {/* Profile Card */}
         <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="p-6">
             <h2 className="text-xl font-semibold flex items-center gap-2 mb-4 text-gray-700">
-              <FaInfoCircle className="text-primary" />
+              <FaUser className="text-primary" />
               Personal Information
             </h2>
 
@@ -107,77 +111,117 @@ const UserProfile = () => {
           </div>
         </div>
 
-        {/* Apartment information */}
+        {/* Apartment Status Card */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="p-6">
             <h2 className="text-xl font-semibold flex items-center gap-2 mb-4 text-gray-700">
-              <MdApartment className="text-primary" />
-              Apartment Status
+              <FaBuilding className="text-primary" />
+              Apartment Information
             </h2>
 
             <div className="space-y-4">
-              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-500">
-                    Agreement
-                  </span>
-                  <span className="badge badge-ghost">None</span>
+              {/* Status Indicator */}
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="p-2 bg-primary/10 rounded-full">
+                  <FaFileSignature className="text-primary" />
                 </div>
-                <div className="h-1 w-full bg-gray-200 rounded-full mb-2">
-                  <div
-                    className="h-1 bg-gray-300 rounded-full"
-                    style={{ width: "0%" }}
-                  ></div>
+                <div>
+                  <p className="text-xs text-gray-500">Agreement Status</p>
+                  <p className="font-medium">None</p>
                 </div>
-                <p className="text-xs text-gray-400 text-center">
-                  No active agreement
+              </div>
+
+              {/* Detailed Apartment Info */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <FaLayerGroup className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Floor Number</p>
+                    <p className="font-medium">None</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <FaBuilding className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Block Name</p>
+                    <p className="font-medium">None</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <FaHashtag className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Apartment Number</p>
+                    <p className="font-medium">None</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <FaMoneyBillWave className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Rent Amount</p>
+                    <p className="font-medium">None</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <MdDateRange className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Agreement Date</p>
+                    <p className="font-medium">None</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 text-center">
+                <p className="text-xs text-gray-400">
+                  Apply for an apartment to see details here
                 </p>
               </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">Apartment</span>
-                  <span className="font-medium">-</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">Floor/Block</span>
-                  <span className="font-medium">-</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">Rent Amount</span>
-                  <span className="font-medium">-</span>
-                </div>
-              </div>
-
-              <button
-                className="btn btn-outline btn-primary btn-sm w-full mt-4"
-                disabled
-              >
-                Apply for Apartment
-              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Additional information */}
+      {/* Additional Info Section */}
       <div className="mt-6 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-6">
           <h2 className="text-xl font-semibold mb-4 text-gray-700">
-            Account Details
+            Account Activity
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <p className="text-sm text-gray-500 mb-1">Last Login</p>
-              <p className="font-medium">
-                {data?.lastLogIn
-                  ? new Date(data.lastLogIn).toLocaleString()
-                  : "Never"}
-              </p>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <div className="p-2 bg-primary/10 rounded-full">
+                <FaCalendarAlt className="text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500">Last Login</p>
+                <p className="font-medium">
+                  {data?.lastLogIn
+                    ? new Date(data.lastLogIn).toLocaleString()
+                    : "Never"}
+                </p>
+              </div>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <p className="text-sm text-gray-500 mb-1">Account Status</p>
-              <p className="font-medium text-success">Active</p>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <div className="p-2 bg-primary/10 rounded-full">
+                <FaEnvelope className="text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500">Account Type</p>
+                <p className="font-medium">Regular User</p>
+              </div>
             </div>
           </div>
         </div>

@@ -6,16 +6,16 @@ import AdminProfile from "../Admin/AdminProfile";
 import MemberProfile from "../Members/MemberProfile";
 
 const DashboardHome = () => {
-  const { role, roleLoading } = useRole;
+  const { data, roleLoading } = useRole();
   if (roleLoading) {
     return <LoadingSpinner isLoading={roleLoading}></LoadingSpinner>;
   }
-  if (role === "user") {
-    return UserProfile;
-  } else if (role === "admin") {
-    return AdminProfile;
-  } else if (role === "member") {
-    return MemberProfile;
+  if (data?.role === "user") {
+    return <UserProfile></UserProfile>;
+  } else if (data?.role === "admin") {
+    return <AdminProfile></AdminProfile>;
+  } else if (data?.role === "member") {
+    return <MemberProfile></MemberProfile>;
   }
 };
 

@@ -32,7 +32,6 @@ const Router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/dashboard/my-profile",
         Component: DashboardHome,
       },
       {

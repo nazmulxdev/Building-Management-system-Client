@@ -23,7 +23,7 @@ const Dashboard = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard/user-profile"
+          to="/dashboard"
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
         >
@@ -58,7 +58,7 @@ const Dashboard = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard/make-payment"
+          to="/dashboard"
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
         >
@@ -83,7 +83,7 @@ const Dashboard = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard/admin-profile"
+          to="/dashboard"
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
         >

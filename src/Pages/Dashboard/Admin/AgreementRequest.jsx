@@ -29,7 +29,7 @@ const AgreementRequest = () => {
     },
   });
 
-  const handleDecision = async (id, decision) => {
+  const handleDecision = async (id, decision, userEmail, apartmentId) => {
     try {
       const result = await Swal.fire({
         title: `Are you sure you want to ${decision} this agreement?`,
@@ -43,16 +43,29 @@ const AgreementRequest = () => {
       });
 
       if (result.isConfirmed) {
-        alert("hi");
-        if (result.isConfirmed) {
+        const agreementRes = await axiosSecure.patch(
+          `/api/agreement-update/${id}`,
+          {
+            status: "checked",
+            decision: decision,
+            email: userEmail,
+            apartmentId: apartmentId,
+          },
+        );
+        if (agreementRes.data.success) {
           await Swal.fire({
-            title: "Success!",
-            text: `Agreement ${decision}ed successfully`,
+            position: "top-end",
+            title: `Agreement ${decision}!`,
+            text:
+              decision === "approved"
+                ? "User has been upgraded to member"
+                : "Agreement rejected",
             icon: "success",
-            timer: 1500,
-            timerProgressBar: true,
             showConfirmButton: false,
+            timer: 1500,
+            toast: true,
           });
+
           refetch();
         }
       }
@@ -245,7 +258,12 @@ const AgreementRequest = () => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() =>
-                            handleDecision(agreement._id, "approved")
+                            handleDecision(
+                              agreement._id,
+                              "approved",
+                              agreement.userEmail,
+                              agreement.apartmentId,
+                            )
                           }
                           className="btn btn-success btn-sm gap-1"
                         >
@@ -256,7 +274,12 @@ const AgreementRequest = () => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() =>
-                            handleDecision(agreement._id, "rejected")
+                            handleDecision(
+                              agreement._id,
+                              "rejected",
+                              agreement.userEmail,
+                              agreement.apartmentId,
+                            )
                           }
                           className="btn btn-error btn-sm gap-1"
                         >

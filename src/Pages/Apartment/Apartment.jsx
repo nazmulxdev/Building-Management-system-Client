@@ -105,16 +105,20 @@ const Apartment = () => {
         width: 500,
       });
       if (isConfirmed) {
-        const response = await axiosSecure.post("/api/agreement", {
+        await axiosSecure.post("/api/agreement", {
           apartmentId: apartment._id,
         });
         refetch();
 
-        Swal.fire(
-          "Success!",
-          response.data.message,
-          "Congratulations, your agreement has been submitted successfully. Please be patience for confirmation",
-        );
+        await Swal.fire({
+          title: "Success!",
+          text: "Congratulations, your agreement has been submitted successfully. Please be patient for confirmation",
+          icon: "success",
+          confirmButtonColor: "#004d40",
+          timer: 3000, // Auto-close after 3 seconds
+          timerProgressBar: true,
+          showConfirmButton: true,
+        });
       }
     } catch (error) {
       Swal.fire("Error!", error.response?.data?.message || "Failed", "error");

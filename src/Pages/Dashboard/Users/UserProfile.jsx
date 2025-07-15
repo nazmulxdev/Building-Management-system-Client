@@ -18,7 +18,7 @@ const UserProfile = () => {
   const { data, roleLoading } = useRole();
   const { currentUser } = useAuth();
 
-  if (roleLoading) return <LoadingSpinner isLoading={roleLoading} />;
+  if (roleLoading) return <LoadingSpinner isLoading={roleLoading} size="xl" fullScreen />;
 
   return (
     <motion.div

@@ -13,12 +13,14 @@ import LoadingSpinner from "../../../Utilities/LoadingSpinner";
 import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const UserProfile = () => {
   const { data, roleLoading } = useRole();
   const { currentUser } = useAuth();
 
-  if (roleLoading) return <LoadingSpinner isLoading={roleLoading} size="xl" fullScreen />;
+  if (roleLoading)
+    return <LoadingSpinner isLoading={roleLoading} size="xl" fullScreen />;
 
   return (
     <motion.div
@@ -85,7 +87,7 @@ const UserProfile = () => {
                       <FaCalendarAlt className="text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500">Member Since</p>
+                      <p className="text-base text-primary">User Since</p>
                       <p className="font-medium">
                         {new Date(data?.createdAt).toLocaleDateString()}
                       </p>
@@ -97,7 +99,7 @@ const UserProfile = () => {
                       <FaEnvelope className="text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500">Email Status</p>
+                      <p className="text-base text-primary">Email Status</p>
                       <p className="font-medium">
                         {currentUser?.emailVerified
                           ? "Verified"
@@ -126,7 +128,7 @@ const UserProfile = () => {
                   <FaFileSignature className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">Agreement Status</p>
+                  <p className="text-base text-primary">Agreement Status</p>
                   <p className="font-medium">None</p>
                 </div>
               </div>
@@ -138,7 +140,7 @@ const UserProfile = () => {
                     <FaLayerGroup className="text-primary" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Floor Number</p>
+                    <p className="text-base text-primary">Floor Number</p>
                     <p className="font-medium">None</p>
                   </div>
                 </div>
@@ -148,7 +150,7 @@ const UserProfile = () => {
                     <FaBuilding className="text-primary" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Block Name</p>
+                    <p className="text-base text-primary">Block Name</p>
                     <p className="font-medium">None</p>
                   </div>
                 </div>
@@ -158,7 +160,7 @@ const UserProfile = () => {
                     <FaHashtag className="text-primary" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Apartment Number</p>
+                    <p className="text-base text-primary">Apartment Number</p>
                     <p className="font-medium">None</p>
                   </div>
                 </div>
@@ -168,7 +170,7 @@ const UserProfile = () => {
                     <FaMoneyBillWave className="text-primary" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Rent Amount</p>
+                    <p className="text-base text-primary">Rent Amount</p>
                     <p className="font-medium">None</p>
                   </div>
                 </div>
@@ -178,15 +180,18 @@ const UserProfile = () => {
                     <MdDateRange className="text-primary" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Agreement Date</p>
+                    <p className="text-base text-primary">Agreement Date</p>
                     <p className="font-medium">None</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-4 text-center">
-                <p className="text-xs text-gray-400">
-                  Apply for an apartment to see details here
+                <p className="text-xs text-black">
+                  Apply for an apartment to{" "}
+                  <Link className="text-primary" to="/apartment">
+                    see details here
+                  </Link>
                 </p>
               </div>
             </div>
@@ -206,7 +211,7 @@ const UserProfile = () => {
                 <FaCalendarAlt className="text-primary" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Last Login</p>
+                <p className="text-base text-primary">Last Login</p>
                 <p className="font-medium">
                   {data?.lastLogIn
                     ? new Date(data.lastLogIn).toLocaleString()
@@ -219,7 +224,7 @@ const UserProfile = () => {
                 <FaEnvelope className="text-primary" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Account Type</p>
+                <p className="text-base text-primary">Account Type</p>
                 <p className="font-medium">Regular User</p>
               </div>
             </div>

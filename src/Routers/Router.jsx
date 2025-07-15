@@ -43,6 +43,10 @@ const Router = createBrowserRouter([
         path: "/dashboard/agreement-requests",
         Component: AgreementRequest,
       },
+      {
+        path: "/dashboard/manage-members",
+        Component: ManageMembers,
+      },
     ],
   },
   {

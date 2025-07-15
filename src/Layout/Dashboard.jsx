@@ -23,12 +23,12 @@ const Dashboard = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard/management"
+          to="/dashboard/announcements"
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
         >
           <FaCog className="text-lg" />
-          <span>Settings</span>
+          <span>Announcement</span>
         </NavLink>
       </li>
     </>

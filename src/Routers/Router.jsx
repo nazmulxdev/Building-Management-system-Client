@@ -11,6 +11,7 @@ import ErrorPage from "../404-Error-Pages/ErrorPage";
 import ManageMembers from "../Pages/Dashboard/Admin/ManageMembers";
 import UserProfile from "../Pages/Dashboard/Users/UserProfile";
 import AgreementRequest from "../Pages/Dashboard/Admin/AgreementRequest";
+import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
 
 const Router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const Router = createBrowserRouter([
       {
         path: "/dashboard/manage-members",
         Component: ManageMembers,
+      },
+      {
+        path: "/dashboard/make-announcement",
+        Component: MakeAnnouncement,
       },
     ],
   },

@@ -13,6 +13,7 @@ import UserProfile from "../Pages/Dashboard/Users/UserProfile";
 import AgreementRequest from "../Pages/Dashboard/Admin/AgreementRequest";
 import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
 import Announcement from "../Pages/Dashboard/Announcement/Announcement";
+import ManageCoupons from "../Pages/Dashboard/Admin/ManageCoupons";
 
 const Router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const Router = createBrowserRouter([
       {
         path: "/dashboard/make-announcement",
         Component: MakeAnnouncement,
+      },
+      {
+        path: "/dashboard/manage-coupons",
+        Component: ManageCoupons,
       },
     ],
   },

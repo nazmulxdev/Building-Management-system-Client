@@ -53,13 +53,14 @@ const ManageCoupons = () => {
   });
 
   const { data: coupons = [], pagination = {} } = couponsData;
-  const { totalPages = 1, currentPage: page = 1, totalItems = 0 } = pagination;
+  const { totalPages = 1, currentPage: Page = 1, totalItems = 0 } = pagination;
 
   // Create new coupon
   const createCouponMutation = useMutation({
     mutationFn: (couponData) => axiosSecure.post("/api/coupons", couponData),
     onSuccess: () => {
       queryClient.invalidateQueries(["coupons"]);
+      queryClient.invalidateQueries(["valid-coupons"]);
       Swal.fire({
         title: "Success!",
         text: "Coupon created successfully",
@@ -96,6 +97,7 @@ const ManageCoupons = () => {
       axiosSecure.patch(`/api/coupons/${id}`, { status }),
     onSuccess: () => {
       queryClient.invalidateQueries(["coupons"]);
+      queryClient.invalidateQueries(["valid-coupons"]);
       Swal.fire({
         title: "Updated!",
         text: "Coupon status updated",
@@ -113,6 +115,7 @@ const ManageCoupons = () => {
     mutationFn: (id) => axiosSecure.delete(`/api/coupons/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries(["coupons"]);
+      queryClient.invalidateQueries(["valid-coupons"]);
       Swal.fire({
         title: "Deleted!",
         text: "Coupon has been deleted",

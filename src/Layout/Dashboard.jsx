@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
 import WebLogo from "../Shared/WebLogo";
 import LogOutButton from "../Shared/LogOutButton";
 import {
@@ -38,7 +38,7 @@ const Dashboard = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard"
+          to="/dashboard/make-payments"
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
         >

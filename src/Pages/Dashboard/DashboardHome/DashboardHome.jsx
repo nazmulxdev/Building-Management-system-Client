@@ -4,6 +4,7 @@ import LoadingSpinner from "../../../Utilities/LoadingSpinner";
 import UserProfile from "../Users/UserProfile";
 import AdminProfile from "../Admin/AdminProfile";
 import MemberProfile from "../Members/MemberProfile";
+import Forbidden from "../../../Routes/Forbidden";
 
 const DashboardHome = () => {
   const { data, roleLoading } = useRole();
@@ -22,6 +23,8 @@ const DashboardHome = () => {
     return <AdminProfile></AdminProfile>;
   } else if (data?.role === "member") {
     return <MemberProfile></MemberProfile>;
+  } else {
+    return <Forbidden></Forbidden>;
   }
 };
 

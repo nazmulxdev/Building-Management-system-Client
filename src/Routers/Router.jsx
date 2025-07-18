@@ -17,6 +17,11 @@ import ManageCoupons from "../Pages/Dashboard/Admin/ManageCoupons";
 import MakePayment from "../Pages/Dashboard/Members/MakePayment";
 import CheckoutPage from "../Pages/Dashboard/Members/CheckoutPage";
 import PaymentHistory from "../Pages/Dashboard/Members/PaymentHistory";
+import PrivateRoutes from "../Routes/PrivateRoutes";
+import Forbidden from "../Routes/Forbidden";
+import UsersRoutes from "../Routes/UsersRoutes";
+import AdminRoutes from "../Routes/AdminRoutes";
+import MembersRoutes from "../Routes/MembersRoutes";
 
 const Router = createBrowserRouter([
   {
@@ -35,47 +40,87 @@ const Router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    Component: Dashboard,
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
     children: [
       {
         index: true,
         Component: DashboardHome,
       },
+      // users routes
       {
         path: "/dashboard/user-profile",
-        Component: UserProfile,
+        element: (
+          <UsersRoutes>
+            <UserProfile></UserProfile>
+          </UsersRoutes>
+        ),
       },
       {
         path: "/dashboard/announcements",
         Component: Announcement,
       },
-      {
-        path: "/dashboard/agreement-requests",
-        Component: AgreementRequest,
-      },
-      {
-        path: "/dashboard/manage-members",
-        Component: ManageMembers,
-      },
-      {
-        path: "/dashboard/make-announcement",
-        Component: MakeAnnouncement,
-      },
-      {
-        path: "/dashboard/manage-coupons",
-        Component: ManageCoupons,
-      },
+
+      // members routes
       {
         path: "/dashboard/make-payments",
-        Component: MakePayment,
+        element: (
+          <MembersRoutes>
+            <MakePayment></MakePayment>
+          </MembersRoutes>
+        ),
       },
       {
         path: "/dashboard/payments-history",
-        Component: PaymentHistory,
+        element: (
+          <MembersRoutes>
+            <PaymentHistory></PaymentHistory>
+          </MembersRoutes>
+        ),
       },
       {
         path: "/dashboard/checkout/:id",
-        Component: CheckoutPage,
+        element: (
+          <MembersRoutes>
+            <CheckoutPage></CheckoutPage>
+          </MembersRoutes>
+        ),
+      },
+      // admin routes
+      {
+        path: "/dashboard/manage-members",
+        element: (
+          <AdminRoutes>
+            <ManageMembers></ManageMembers>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/agreement-requests",
+        element: (
+          <AdminRoutes>
+            <AgreementRequest></AgreementRequest>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/make-announcement",
+        element: (
+          <AdminRoutes>
+            <MakeAnnouncement></MakeAnnouncement>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/manage-coupons",
+        element: (
+          <AdminRoutes>
+            <ManageCoupons></ManageCoupons>
+          </AdminRoutes>
+        ),
       },
     ],
   },
@@ -96,6 +141,10 @@ const Router = createBrowserRouter([
   {
     path: "*",
     Component: ErrorPage,
+  },
+  {
+    path: "/forbidden",
+    Component: Forbidden,
   },
 ]);
 

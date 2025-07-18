@@ -317,14 +317,16 @@ const ManageCoupons = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <button
+                          title="Change Status"
                           onClick={() =>
                             handleToggleStatus(coupon._id, coupon.status)
                           }
-                          className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${
-                            coupon.status === "active"
-                              ? "bg-success/20 text-success"
-                              : "bg-error/20 text-error"
-                          }`}
+                          className={`flex items-center gap-2 px-3 py-1 
+                           hover:cursor-pointer rounded-full text-sm font-medium ${
+                             coupon.status === "active"
+                               ? "bg-success/20 text-success"
+                               : "bg-error/20 text-error"
+                           }`}
                         >
                           {coupon.status === "active" ? (
                             <FiToggleRight className="text-success" />
@@ -338,7 +340,7 @@ const ManageCoupons = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
                           onClick={() => handleDelete(coupon._id)}
-                          className="text-error hover:text-error/80 p-2 rounded-full hover:bg-error/10 transition-colors"
+                          className="text-error hover:text-error/80 p-2 rounded-full hover:bg-error/10 transition-colors hover:cursor-pointer"
                           title="Delete coupon"
                         >
                           <FiTrash2 />

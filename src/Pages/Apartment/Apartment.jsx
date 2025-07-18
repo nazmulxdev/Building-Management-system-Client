@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Utilities/LoadingSpinner";
@@ -30,22 +30,30 @@ const Apartment = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["apartments", activePage, appliedRentRange],
-    queryFn: async () => {
-      const res = await axiosInstance.get(
-        `/api/apartments?page=${activePage}&limit=6${
-          appliedRentRange.min ? `&minRent=${appliedRentRange.min}` : ""
-        }${appliedRentRange.max ? `&maxRent=${appliedRentRange.max}` : ""}`,
-      );
+    queryFn: async ({ queryKey }) => {
+      const [_key, page, rentRange] = queryKey;
+      let url = `/api/apartments?page=${page}&limit=6`;
+
+      if (rentRange?.min !== null) {
+        url += `&minRent=${rentRange.min}`;
+      }
+      if (rentRange?.max !== null) {
+        url += `&maxRent=${rentRange.max}`;
+      }
+
+      const res = await axiosInstance.get(url);
       return res.data;
     },
     keepPreviousData: true,
   });
+
   const handleSearch = () => {
     setAppliedRentRange({
-      min: minRent || null,
-      max: maxRent || null,
+      min: minRent ? Number(minRent) : null,
+      max: maxRent ? Number(maxRent) : null,
     });
     setActivePage(1); // Reset to first page on new search
   };

@@ -16,6 +16,7 @@ import Announcement from "../Pages/Dashboard/Announcement/Announcement";
 import ManageCoupons from "../Pages/Dashboard/Admin/ManageCoupons";
 import MakePayment from "../Pages/Dashboard/Members/MakePayment";
 import CheckoutPage from "../Pages/Dashboard/Members/CheckoutPage";
+import PaymentHistory from "../Pages/Dashboard/Members/PaymentHistory";
 
 const Router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const Router = createBrowserRouter([
       {
         path: "/dashboard/make-payments",
         Component: MakePayment,
+      },
+      {
+        path: "/dashboard/payments-history",
+        Component: PaymentHistory,
       },
       {
         path: "/dashboard/checkout/:id",

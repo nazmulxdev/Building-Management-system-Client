@@ -48,7 +48,7 @@ const Dashboard = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard/payment-history"
+          to="/dashboard/payments-history"
           onClick={closeDrawer}
           className="flex items-center gap-2 font-semibold"
         >

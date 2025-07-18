@@ -57,11 +57,6 @@ const useAxiosSecure = () => {
             title: "Forbidden access.",
             text: "This route is only for admins.",
           });
-        } else if (status === 404) {
-          await handleLogout({
-            title: "Invalid token",
-            text: "Your access token is corrupted. Please login again.",
-          });
         }
 
         return Promise.reject(error);

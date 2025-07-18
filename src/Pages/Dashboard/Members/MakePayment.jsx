@@ -18,7 +18,7 @@ const MakePayment = () => {
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   console.log(role);
-  // Fetch member's agreement data
+  // member's agreement data
   const {
     data: member,
     isLoading,
@@ -116,27 +116,36 @@ const MakePayment = () => {
       couponCode: appliedCoupon?.code || "",
       email: currentUser?.email,
     };
-    console.log(paymentData);
-    const response = await axiosSecure.post(
-      "/api/checkout-payment",
-      paymentData,
-    );
 
-    console.log(response.data);
+    try {
+      const response = await axiosSecure.post(
+        "/api/checkout-payment",
+        paymentData,
+      );
+      console.log(response.data);
 
-    if (response?.data?.success) {
-      await Swal.fire({
-        icon: "success",
-        title: response?.data?.message || "Payment initiated successfully",
-        showConfirmButton: true,
-      });
-      navigate(`/dashboard/checkout/${response?.data?.id}`);
+      if (response?.data?.success) {
+        await Swal.fire({
+          icon: "success",
+          title: response?.data?.message || "Payment initiated successfully",
+          showConfirmButton: true,
+        });
+        navigate(`/dashboard/checkout/${response?.data?.id}`);
+      }
+    } catch (error) {
+      if (error.response?.status === 409) {
+        return Swal.fire({
+          icon: "info",
+          title: "Already Paid",
+          text: error.response.data?.message || "Payment already exists",
+        });
+      }
     }
   };
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="alert alert-error shadow-lg max-w-md">
+        <div className="alert alert-error shadow-lg max-w-screen-2xl">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +174,7 @@ const MakePayment = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-screen-2xl mx-auto"
+          className="max-w-screen-2xl mx-auto w-full"
         >
           <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-primary mb-3">

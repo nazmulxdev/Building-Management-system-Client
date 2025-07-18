@@ -81,6 +81,16 @@ const Dashboard = () => {
           <span>Payment History</span>
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/dashboard/announcements"
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <FaCog className="text-lg" />
+          <span>Announcement</span>
+        </NavLink>
+      </li>
     </>
   );
 

@@ -73,8 +73,6 @@ const RegisterPage = () => {
     } finally {
       setLoading(false);
     }
-
-    console.log(data);
   };
 
   const password = watch("password");

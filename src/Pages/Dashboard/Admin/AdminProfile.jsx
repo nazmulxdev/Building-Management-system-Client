@@ -41,6 +41,8 @@ const AdminProfile = () => {
     },
   });
 
+  console.log(data?.apartmentsCount);
+
   useEffect(() => {
     document.title = `Dashboard | ${role?.name}`;
   }, [role]);
@@ -70,7 +72,7 @@ const AdminProfile = () => {
   const userData = [
     { name: "Admins", value: userStats.totalAdmin, color: "#004d40" },
     { name: "Members", value: userStats.totalMember, color: "#2563eb" },
-    { name: "Users", value: userStats.totalUsers, color: "#64748b" },
+    { name: "Users", value: userStats.totalUser, color: "#64748b" },
   ];
 
   // Animation variants
@@ -167,11 +169,7 @@ const AdminProfile = () => {
                     <FaUser />
                     <span>
                       Total Users:{" "}
-                      <strong>
-                        {(userStats.totalUsers || 0) +
-                          (userStats.totalMember || 0) +
-                          (userStats.totalAdmin || 0)}
-                      </strong>
+                      <strong>{userStats.totalWebSiteUsers || 0}</strong>
                     </span>
                   </div>
                 </div>
@@ -429,7 +427,7 @@ const AdminProfile = () => {
                   <div className="bg-neutral/10 p-3 rounded-lg text-center">
                     <p className="text-sm text-text-secondary">Users</p>
                     <p className="text-2xl font-bold text-neutral">
-                      {userStats.totalUsers || 0}
+                      {userStats.totalUser || 0}
                     </p>
                     <p className="text-xs text-text-secondary">
                       {userStats.percentageOfUsers || 0}% of total

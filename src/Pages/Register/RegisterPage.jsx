@@ -5,7 +5,7 @@ import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 import { auth } from "../../Firebase/firebase.config";
 import { sweetError, sweetSuccess } from "../../Utilities/alert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingSpinner from "../../Utilities/LoadingSpinner";
 
 const RegisterPage = () => {
@@ -20,6 +20,10 @@ const RegisterPage = () => {
     watch,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    document.title = "BuildMate | Register Page";
+  }, []);
 
   const onSubmit = async (data) => {
     setLoading(true);

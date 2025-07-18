@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Utilities/LoadingSpinner";
@@ -30,6 +30,10 @@ const Apartment = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    document.title = "BuildMate | Apartments";
+  }, []);
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["apartments", activePage, appliedRentRange],

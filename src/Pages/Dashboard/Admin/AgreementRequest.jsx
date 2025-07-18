@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 const AgreementRequest = () => {
   const axiosSecure = useAxiosSecure();
@@ -28,6 +29,10 @@ const AgreementRequest = () => {
       return res.data;
     },
   });
+
+  useEffect(() => {
+    document.title = "Dashboard | Pending Agreements";
+  }, []);
 
   const handleDecision = async (id, decision, userEmail, apartmentId) => {
     try {

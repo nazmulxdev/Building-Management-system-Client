@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   FiAlertCircle,
@@ -27,6 +27,10 @@ const Announcements = () => {
     },
     keepPreviousData: true,
   });
+
+  useEffect(() => {
+    document.title = "Dashboard | Announcements";
+  }, []);
 
   const announcements = announcementsData?.data || [];
   const { totalPages = 1, totalItems = 0 } =

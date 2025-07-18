@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLoginButton from "../../Shared/SocialLoginButton";
 import useAuth from "../../Hooks/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingSpinner from "../../Utilities/LoadingSpinner";
 import { sweetError, sweetSuccess } from "../../Utilities/alert";
 import useAxios from "../../Hooks/useAxios";
@@ -18,6 +18,10 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    document.title = "BuildMate | Login Page";
+  }, []);
 
   const onSubmit = async (data) => {
     setLoading(true);

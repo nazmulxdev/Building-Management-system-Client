@@ -1,6 +1,6 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import LoadingSpinner from "../../../Utilities/LoadingSpinner";
@@ -10,7 +10,6 @@ import {
   FaCreditCard,
   FaExclamationCircle,
   FaExclamationTriangle,
-  FaCheckCircle,
   FaLock,
   FaArrowLeft,
 } from "react-icons/fa";
@@ -38,6 +37,10 @@ const CheckoutForm = () => {
     },
     retry: 2,
   });
+
+  useEffect(() => {
+    document.title = "Dashboard | Payment Page";
+  }, []);
 
   const finalAmount = data?.result?.finalAmount;
 

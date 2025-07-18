@@ -26,6 +26,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useEffect } from "react";
 
 const AdminProfile = () => {
   const { data: role, roleLoading } = useRole();
@@ -39,6 +40,10 @@ const AdminProfile = () => {
       return response?.data;
     },
   });
+
+  useEffect(() => {
+    document.title = `Dashboard | ${role?.name}`;
+  }, [role]);
 
   const apartmentStats = data?.apartmentsCount?.[0] || {};
   const userStats = data?.userCount?.[0] || {};

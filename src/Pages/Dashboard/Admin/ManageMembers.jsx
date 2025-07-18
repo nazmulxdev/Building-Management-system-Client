@@ -4,6 +4,7 @@ import LoadingSpinner from "../../../Utilities/LoadingSpinner";
 import { FaEnvelope, FaTimes, FaTrashAlt, FaUsers } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 const ManageMembers = () => {
   const axiosSecure = useAxiosSecure();
@@ -21,6 +22,10 @@ const ManageMembers = () => {
       return res.data;
     },
   });
+
+  useEffect(() => {
+    document.title = "Dashboard | Manage Members";
+  }, []);
 
   // Mutation for removing member status
   const { mutate: removeMember } = useMutation({

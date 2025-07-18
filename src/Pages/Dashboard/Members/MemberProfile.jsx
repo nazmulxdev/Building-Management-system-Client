@@ -15,6 +15,7 @@ import useRole from "../../../Hooks/useRole";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useEffect } from "react";
 
 const MemberProfile = () => {
   const { data, roleLoading } = useRole();
@@ -30,6 +31,10 @@ const MemberProfile = () => {
     },
     enabled: !!currentUser?.email,
   });
+
+  useEffect(() => {
+    document.title = `Dashboard | ${data?.name}`;
+  }, [data]);
   return (
     <LoadingSpinner isLoading={roleLoading} size="xl" fullScreen>
       <motion.div

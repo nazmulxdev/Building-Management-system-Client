@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { MdApartment, MdPayment, MdEmail } from "react-icons/md";
 import { format } from "date-fns";
+import { useEffect } from "react";
 
 const PaymentHistory = () => {
   const { data: role, roleLoading } = useRole();
@@ -27,7 +28,9 @@ const PaymentHistory = () => {
       return response.data;
     },
   });
-  console.log(paymentsResponse);
+  useEffect(() => {
+    document.title = "Dashboard | Payment History";
+  }, []);
 
   const paymentsHistory = paymentsResponse?.result || [];
 

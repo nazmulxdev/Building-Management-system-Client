@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   FiPlus,
@@ -35,6 +35,10 @@ const ManageCoupons = () => {
     "bg-gradient-to-r from-amber-500 to-orange-500",
     "bg-gradient-to-r from-purple-500 to-pink-500",
   ];
+
+  useEffect(() => {
+    document.title = "Dashboard | Coupons";
+  }, []);
 
   // Fetch all coupons
   const {

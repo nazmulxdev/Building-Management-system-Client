@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const MakeAnnouncement = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,6 +16,10 @@ const MakeAnnouncement = () => {
     watch,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    document.title = "Dashboard | Make Announcement";
+  }, []);
 
   const onSubmit = async (data) => {
     try {

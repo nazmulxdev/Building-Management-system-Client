@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
@@ -73,6 +73,10 @@ const MakePayment = () => {
       });
     }
   };
+
+  useEffect(() => {
+    document.title = "Dashboard | Make Payment";
+  }, []);
 
   // Remove coupon handler
   const handleRemoveCoupon = () => {

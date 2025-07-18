@@ -14,10 +14,14 @@ import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import { useEffect } from "react";
 
 const UserProfile = () => {
   const { data, roleLoading } = useRole();
   const { currentUser } = useAuth();
+  useEffect(() => {
+    document.title = `Dashboard | ${data?.name}`;
+  }, [data]);
 
   if (roleLoading)
     return <LoadingSpinner isLoading={roleLoading} size="xl" fullScreen />;

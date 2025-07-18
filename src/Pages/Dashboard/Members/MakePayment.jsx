@@ -106,6 +106,8 @@ const MakePayment = () => {
       userId: role._id,
       apartmentId: member.apartmentId,
       apartmentNo: member.apartmentNo,
+      floor: member?.floor,
+      block: member?.block,
       month: parseInt(month),
       year: parseInt(year),
       originalRent: member.rent,

@@ -41,8 +41,6 @@ const AdminProfile = () => {
     },
   });
 
-  console.log(data?.apartmentsCount);
-
   useEffect(() => {
     document.title = `Dashboard | ${role?.name}`;
   }, [role]);

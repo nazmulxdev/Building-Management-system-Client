@@ -5,7 +5,7 @@ This is the client-side of "BuildMate," a full-stack, responsive web application
 <div align="center">
 
 [![Live Site](https://img.shields.io/badge/Live_Site-my--house.web.app-blue?style=for-the-badge&logo=firebase)](https://my-house-6de15.web.app/)
-[![Server Repo](https://img.shields.io/badge/Server_Repo-GitHub-333?style=for-the-badge&logo=github)](https://github.com/Programming-Hero-Web-Course4/b11a12-server-side-nazmulxdev)
+[![Server Repo](https://img.shields.io/badge/Server_Repo-GitHub-333?style=for-the-badge&logo=github)](https://github.com/nazmulxdev/Building-Management-system-Server)
 [![Live API](https://img.shields.io/badge/Live_API-Online-blueviolet?style=for-the-badge)](https://my-house-server.vercel.app/)
 
 </div>
@@ -91,7 +91,7 @@ Follow these steps to run the client-side on your local machine:
 **1. Clone the repository:**
 
 ```bash
-git clone [https://github.com/Programming-Hero-Web-Course4/b11a12-client-side-nazmulxdev.git](https://github.com/Programming-Hero-Web-Course4/b11a12-client-side-nazmulxdev.git)
+git clone [https://github.com/nazmulxdev/Building-Management-system-Client.git](https://github.com/nazmulxdev/Building-Management-system-Client.git)
 ```
 
 **2. Navigate to the project directory:**

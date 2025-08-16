@@ -5,6 +5,7 @@ import HomeBanner from "./HomeBanner";
 import LocationSection from "./LocationSection";
 import QuickStats from "./QuickStats";
 import Contact from "./Contact";
+import TenantTestimonials from "./TenantTestimonials";
 const Home = () => {
   useEffect(() => {
     document.title = "BuildMate | Home";
@@ -15,6 +16,7 @@ const Home = () => {
       <QuickStats></QuickStats>
       <CouponBanner></CouponBanner>
       <AboutBuilding></AboutBuilding>
+      <TenantTestimonials></TenantTestimonials>
       <LocationSection></LocationSection>
       <Contact></Contact>
     </div>

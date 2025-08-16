@@ -7,6 +7,7 @@ import QuickStats from "./QuickStats";
 import Contact from "./Contact";
 import TenantTestimonials from "./TenantTestimonials";
 import MediaGallery from "./MediaGallery";
+import EventsCalendar from "./EventsCalendar";
 const Home = () => {
   useEffect(() => {
     document.title = "BuildMate | Home";
@@ -16,6 +17,7 @@ const Home = () => {
       <HomeBanner></HomeBanner>
       <QuickStats></QuickStats>
       <CouponBanner></CouponBanner>
+      <EventsCalendar></EventsCalendar>
       <AboutBuilding></AboutBuilding>
       <MediaGallery></MediaGallery>
       <TenantTestimonials></TenantTestimonials>

@@ -62,7 +62,7 @@ const CouponBanner = () => {
 
   return (
     <LoadingSpinner isLoading={isLoading}>
-      <section className="pt-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-base-200 to-base-100">
+      <section className="pt-12 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-7xl mx-auto">
           {error ? (
             <motion.div

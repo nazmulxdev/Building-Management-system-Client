@@ -65,7 +65,7 @@ const NavBar = () => {
               <FaBars className="text-primary" />
             </button>
             {isMobileMenuOpen && (
-              <ul className="menu menu-sm absolute mt-2 p-2 shadow bg-base-100 rounded-box w-52 z-50">
+              <ul className="menu menu-sm absolute mt-2 p-2 shadow bg-base-300 rounded-box w-52 z-50">
                 {navLinks}
               </ul>
             )}
@@ -101,7 +101,7 @@ const NavBar = () => {
                 </button>
                 <ThemeToggleButton></ThemeToggleButton>
                 {isProfileOpen && (
-                  <ul className="menu absolute right-0 mt-2 p-3 shadow bg-base-100 rounded-box w-52 z-50">
+                  <ul className="menu absolute right-0 mt-2 p-3 shadow bg-base-300 border-base-300 rounded-box w-52 z-50">
                     <li className="pointer-events-none text-lg font-bold text-primary">
                       {user.displayName}
                     </li>

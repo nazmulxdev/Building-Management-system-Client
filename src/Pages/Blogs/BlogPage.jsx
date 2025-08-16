@@ -197,7 +197,7 @@ const BlogPage = () => {
       </AnimatePresence>
       <div className="min-h-screen bg-base-100 ">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary to-secondary text-primary-content py-20 px-4 sm:px-6 lg:px-8">
+        <section className="bg-primary text-primary-content py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-4xl font-bold sm:text-5xl mb-6">
               Building Insights

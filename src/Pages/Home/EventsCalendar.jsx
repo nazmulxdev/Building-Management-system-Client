@@ -117,7 +117,8 @@ const EventsCalendar = () => {
                   <img
                     src={event.image}
                     alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-cover
+                    transition-transform duration-500 hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral/90 to-transparent p-4">

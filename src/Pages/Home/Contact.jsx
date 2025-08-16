@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const Contact = () => {
@@ -273,9 +274,12 @@ const Contact = () => {
                   className="ml-2 block text-sm text-text-secondary"
                 >
                   I agree to the{" "}
-                  <a href="#" className="text-primary hover:underline">
+                  <Link
+                    to="privacy-policies"
+                    className="text-primary hover:underline"
+                  >
                     privacy policy
-                  </a>
+                  </Link>
                 </label>
               </div>
 

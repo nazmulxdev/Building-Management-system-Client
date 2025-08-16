@@ -22,6 +22,8 @@ import Forbidden from "../Routes/Forbidden";
 import UsersRoutes from "../Routes/UsersRoutes";
 import AdminRoutes from "../Routes/AdminRoutes";
 import MembersRoutes from "../Routes/MembersRoutes";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import BlogPage from "../Pages/Blogs/BlogPage";
 
 const Router = createBrowserRouter([
   {
@@ -35,6 +37,18 @@ const Router = createBrowserRouter([
       {
         path: "/apartment",
         element: <Apartment></Apartment>,
+      },
+      {
+        path: "/privacy-policies",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+      {
+        path: "/blogs",
+        element: (
+          <PrivateRoutes>
+            <BlogPage></BlogPage>
+          </PrivateRoutes>
+        ),
       },
     ],
   },

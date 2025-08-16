@@ -34,6 +34,26 @@ const NavBar = () => {
           Apartment
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          className=" text-lg"
+          to="/privacy-policies"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Privacy Policies
+        </NavLink>
+      </li>
+      {user && (
+        <li>
+          <NavLink
+            className=" text-lg"
+            to="/blogs"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Blogs
+          </NavLink>
+        </li>
+      )}
     </>
   );
 

@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  theme: "light", "dark";
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
@@ -45,6 +47,25 @@
   --color-success: #16a34a;
   --color-warning: #f59e0b;
   --color-error: #dc2626;
+}
+
+/* --- Dark Theme --- */
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #26a69a; /* Lighter teal for better visibility */
+  --color-primary-content: #ffffff;
+  --color-secondary: #3b82f6; /* Slightly brighter blue */
+  --color-accent: #f8d474; /* Same gold accent */
+  --color-neutral: #334155; /* Lighter neutral */
+  --color-base-100: #0f172a; /* Dark slate background */
+  --color-base-200: #1e293b;
+  --color-base-300: #334155;
+  --color-text: #f8fafc; /* Light text */
+  --color-text-secondary: #94a3b8;
+  --color-info: #6366f1;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
 }
 
 .active {

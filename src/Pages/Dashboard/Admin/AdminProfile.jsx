@@ -111,7 +111,7 @@ const AdminProfile = () => {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="min-h-screen bg-gradient-to-br from-base-200 to-base-100 p-4 sm:p-6"
+        className="min-h-screen bg-gradient-to-br from-base-200 to-base-100  p-4 sm:p-6"
       >
         <div className="max-w-screen-2xl mx-auto">
           {/* Admin Profile Header */}

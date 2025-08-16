@@ -6,6 +6,7 @@ import LogInButton from "../Shared/LogInButton";
 import LogOutButton from "../Shared/LogOutButton";
 import { FiLayout } from "react-icons/fi";
 import useAuth from "../Hooks/useAuth";
+import ThemeToggleButton from "../Utilities/ThemeToggleButton";
 
 const NavBar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -84,7 +85,10 @@ const NavBar = () => {
           {/* Auth/Profile section */}
           <div ref={profileRef}>
             {!user ? (
-              <LogInButton></LogInButton>
+              <div className="flex justify-between items-center gap-2">
+                <LogInButton></LogInButton>{" "}
+                <ThemeToggleButton></ThemeToggleButton>
+              </div>
             ) : (
               <div className="relative">
                 <button
@@ -95,6 +99,7 @@ const NavBar = () => {
                     <img src={user?.photoURL} alt="Profile" />
                   </div>
                 </button>
+                <ThemeToggleButton></ThemeToggleButton>
                 {isProfileOpen && (
                   <ul className="menu absolute right-0 mt-2 p-3 shadow bg-base-100 rounded-box w-52 z-50">
                     <li className="pointer-events-none text-lg font-bold text-primary">

@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import buildingAnimation from "../assets/login.json";
 import { useEffect, useState } from "react";
 import WhiteWebLogo from "../Shared/WhiteWebLogo";
+import ThemeToggleButton from "../Utilities/ThemeToggleButton";
 
 const AuthLayout = () => {
   const [currentGreeting, setCurrentGreeting] = useState(0);
@@ -44,7 +45,7 @@ const AuthLayout = () => {
         className="hidden lg:flex flex-col items-center justify-center w-1/2 max-w-2xl p-12 relative z-10"
       >
         <div className="w-full max-w-md">
-          <div className="flex items-start mb-2">
+          <div className="flex items-center mb-2">
             <WhiteWebLogo></WhiteWebLogo>
           </div>
 

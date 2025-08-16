@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import useRole from "../Hooks/useRole";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
+import ThemeToggleButton from "../Utilities/ThemeToggleButton";
 
 const Dashboard = () => {
   const { data: role, roleLoading } = useRole();
@@ -196,8 +197,8 @@ const Dashboard = () => {
           />
           <div className="menu bg-base-200 text-base-content w-64 md:w-80 min-h-full flex flex-col">
             {/* Sidebar Header */}
-            <div className="p-4">
-              <WebLogo />
+            <div className="p-4 flex items-center justify-between">
+              <WebLogo /> <ThemeToggleButton></ThemeToggleButton>
             </div>
 
             <div className="divider h-0.5 bg-primary my-0" />

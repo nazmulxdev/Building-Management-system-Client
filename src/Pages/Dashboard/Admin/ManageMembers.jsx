@@ -87,7 +87,7 @@ const ManageMembers = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="p-4 md:p-6"
+      className="p-4 md:p-6 min-h-screen bg-gradient-to-br from-base-200 to-base-100"
     >
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
@@ -96,7 +96,7 @@ const ManageMembers = () => {
             <FaUsers className="text-4xl text-primary" />
             <h1 className="text-3xl font-bold text-primary">Manage Members</h1>
           </div>
-          <p className="text-gray-500">View and manage all building members</p>
+          <p>View and manage all building members</p>
         </div>
         <div className="badge badge-primary badge-lg gap-2 px-4 py-3">
           <FaUsers className="text-white" />
@@ -105,11 +105,11 @@ const ManageMembers = () => {
       </div>
 
       {/* Members Table */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+      <div className="bg-base-100 rounded-xl shadow-md overflow-hidden border border-base-300">
         <div className="overflow-x-auto">
           <table className="table w-full">
             {/* Table Header */}
-            <thead className="bg-base-200">
+            <thead className="bg-base-300">
               <tr>
                 <th>Member</th>
                 <th>Email</th>
@@ -118,7 +118,7 @@ const ManageMembers = () => {
             </thead>
 
             {/* Table Body */}
-            <tbody>
+            <tbody className="bg-base-100 divide-y divide-base-300">
               {members?.length ? (
                 members.map((member) => (
                   <motion.tr
@@ -126,7 +126,7 @@ const ManageMembers = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="hover:bg-base-100 border-b border-gray-100"
+                    className="hover:bg-base-300  "
                   >
                     {/* Member Info */}
                     <td>

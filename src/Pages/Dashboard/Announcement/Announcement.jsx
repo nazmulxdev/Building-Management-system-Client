@@ -49,7 +49,7 @@ const Announcements = () => {
 
   return (
     <LoadingSpinner fullScreen size="xl" isLoading={isLoading}>
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-base-100">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-base-200 to-base-100">
         <div className="max-w-screen-2xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">

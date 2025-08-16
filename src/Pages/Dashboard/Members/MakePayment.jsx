@@ -276,7 +276,7 @@ const MakePayment = () => {
                         min={`${new Date().getFullYear()}-${String(
                           new Date().getMonth() + 1,
                         ).padStart(2, "0")}`}
-                        className="pl-10 input input-bordered w-full"
+                        className="pl-10 input input-bordered bg-base-300 w-full"
                         required
                       />
                     </div>

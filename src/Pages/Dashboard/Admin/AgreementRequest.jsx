@@ -105,7 +105,7 @@ const AgreementRequest = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="p-4 md:p-6"
+      className="p-4 md:p-6 min-h-screen bg-gradient-to-br from-base-200 to-base-100"
     >
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
@@ -116,9 +116,7 @@ const AgreementRequest = () => {
               Agreement Requests
             </h1>
           </div>
-          <p className="text-gray-500">
-            Review and manage pending apartment applications
-          </p>
+          <p>Review and manage pending apartment applications</p>
         </div>
       </div>
 
@@ -177,12 +175,12 @@ const AgreementRequest = () => {
         </motion.div>
       </div>
 
-      {/* Responsive Table Container */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+      {/* Responsive Table Container className=" rounded-xl shadow-md overflow-hidden " */}
+      <div className=" rounded-xl shadow-md  bg-base-100  overflow-hidden border border-base-300">
         <div className="overflow-x-auto">
           <table className="table w-full">
             {/* Table Header - Hidden on mobile */}
-            <thead className="bg-base-200 hidden sm:table-header-group">
+            <thead className="bg-base-300 hidden sm:table-header-group">
               <tr>
                 <th>Applicant</th>
                 <th>Details</th>
@@ -200,7 +198,7 @@ const AgreementRequest = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="hover:bg-base-100 border-b border-gray-100"
+                    className="hover:bg-base-100 border-b bg-base-100 border-gray-100"
                   >
                     {/* User Info - Stacked on mobile */}
                     <td className="py-3">

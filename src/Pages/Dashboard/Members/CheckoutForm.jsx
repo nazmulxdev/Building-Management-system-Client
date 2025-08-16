@@ -168,9 +168,7 @@ const CheckoutForm = () => {
           <div className="text-yellow-500 mb-6 flex justify-center">
             <FaExclamationTriangle className="text-5xl" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">
-            Invalid Amount
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">Invalid Amount</h3>
           <p className="text-gray-600 mb-6">The payment amount is not valid.</p>
           <button
             onClick={() => navigate(-1)}
@@ -184,9 +182,9 @@ const CheckoutForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 sm:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-100 flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-screen-2xl">
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="bg-base-100 rounded-xl shadow-md overflow-hidden">
           {/* Header */}
           <div className="bg-primary p-6 text-center">
             <div className="flex items-center justify-center gap-2">
@@ -203,8 +201,8 @@ const CheckoutForm = () => {
           {/* Payment Summary */}
           <div className="p-6 border-b border-gray-200">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-600">Amount Due:</span>
-              <span className="text-2xl font-bold text-gray-800">
+              <span>Amount Due:</span>
+              <span className="text-2xl font-bold">
                 ${finalAmount.toFixed(2)}
               </span>
             </div>
@@ -220,7 +218,7 @@ const CheckoutForm = () => {
           {/* Payment Form */}
           <form onSubmit={handleSubmit} className="p-6">
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium  mb-2">
                 Card Details
               </label>
               <div className="border border-gray-300 rounded-lg p-3 hover:border-primary transition duration-200">
@@ -229,16 +227,20 @@ const CheckoutForm = () => {
                     style: {
                       base: {
                         fontSize: "16px",
-                        color: "#1e293b",
-                        "::placeholder": {
-                          color: "#94a3b8",
-                        },
                         fontFamily: "'Inter', sans-serif",
+                        color: "#26a69a", // text color
+                        "::placeholder": {
+                          color: "#9ca3af", // Tailwind gray-400
+                        },
                       },
                       invalid: {
-                        color: "#dc2626",
+                        color: "#dc2626", // Tailwind red-600
+                      },
+                      complete: {
+                        color: "#004d40", // Tailwind emerald/dark green
                       },
                     },
+                    hidePostalCode: true, // hide postal code if you don’t need it
                   }}
                 />
               </div>

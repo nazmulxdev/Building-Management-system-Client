@@ -27,22 +27,22 @@ const LocationSection = () => {
   // Transportation options
   const transportOptions = [
     {
-      icon: <FaSubway className="text-2xl text-primary" />,
+      icon: <FaSubway className="text-2xl text-accent" />,
       title: "Metro",
       description: "5 min walk from Motijheel Metro Station (Line 6)",
     },
     {
-      icon: <FaBus className="text-2xl text-primary" />,
+      icon: <FaBus className="text-2xl text-accent" />,
       title: "Bus",
       description: "Routes 101, 203, 305 stop at our front entrance",
     },
     {
-      icon: <FaCar className="text-2xl text-primary" />,
+      icon: <FaCar className="text-2xl text-accent" />,
       title: "Car",
       description: "Parking available for residents and visitors",
     },
     {
-      icon: <FaWalking className="text-2xl text-primary" />,
+      icon: <FaWalking className="text-2xl text-accent" />,
       title: "Walk",
       description: "10 min from Gulshan 2 circle",
     },

@@ -31,7 +31,7 @@ const UserProfile = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="max-w-screen-2xl mx-auto p-4 md:p-6"
+      className="max-w-screen-2xl min-h-screen bg-gradient-to-br from-base-200 to-base-100 mx-auto p-4 md:p-6"
     >
       {/* Profile Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
@@ -53,7 +53,7 @@ const UserProfile = () => {
       {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Profile Card */}
-        <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-base-300 overflow-hidden">
           <div className="p-6">
             <h2 className="text-xl font-semibold flex items-center gap-2 mb-4 text-gray-700">
               <FaUser className="text-primary" />

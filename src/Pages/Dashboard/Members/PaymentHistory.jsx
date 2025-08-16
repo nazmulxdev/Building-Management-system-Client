@@ -59,28 +59,26 @@ const PaymentHistory = () => {
 
   return (
     <LoadingSpinner isLoading={roleLoading || isLoading}>
-      <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
+      <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-100 p-4 sm:p-6">
         <div className="max-w-screen-2xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 flex items-center gap-3">
+            <h1 className="text-2xl sm:text-3xl font-bold  flex items-center gap-3">
               <FaReceipt className="text-primary" />
               Payment History
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className=" mt-2">
               View all your past transactions and payment details
             </p>
           </div>
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-base-100 p-4 rounded-lg shadow-sm border border-base-300">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500">Total Payments</p>
-                  <p className="text-2xl font-bold text-gray-800">
-                    {totalPayments}
-                  </p>
+                  <p className="text-sm ">Total Payments</p>
+                  <p className="text-2xl font-bold">{totalPayments}</p>
                 </div>
                 <div className="bg-indigo-100 p-3 rounded-full">
                   <MdPayment className="text-indigo-600 text-xl" />
@@ -88,11 +86,11 @@ const PaymentHistory = () => {
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-base-100 p-4 rounded-lg shadow-sm border border-base-300">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500">Total Amount Paid</p>
-                  <p className="text-2xl font-bold text-gray-800">
+                  <p className="text-sm ">Total Amount Paid</p>
+                  <p className="text-2xl font-bold">
                     ${totalAmountPaid.toLocaleString()}
                   </p>
                 </div>
@@ -102,11 +100,11 @@ const PaymentHistory = () => {
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-base-100 p-4 rounded-lg shadow-sm border border-base-300">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500">Total Discounts</p>
-                  <p className="text-2xl font-bold text-gray-800">
+                  <p className="text-sm ">Total Discounts</p>
+                  <p className="text-2xl font-bold ">
                     ${totalDiscounts.toLocaleString()}
                   </p>
                 </div>
@@ -116,11 +114,11 @@ const PaymentHistory = () => {
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-base-100 p-4 rounded-lg shadow-sm border border-base-300">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500">Last Payment</p>
-                  <p className="text-xl font-bold text-gray-800">
+                  <p className="text-sm ">Last Payment</p>
+                  <p className="text-xl font-bold ">
                     {lastPaymentDate ? formatDate(lastPaymentDate) : "N/A"}
                   </p>
                 </div>
@@ -132,14 +130,14 @@ const PaymentHistory = () => {
           </div>
 
           {/* Payment History Table */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="bg-base-100 rounded-xl shadow-sm border border-base-300 overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+              <table className="min-w-full divide-y divide-base-300">
+                <thead className="bg-base-300">
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                     >
                       <div className="flex items-center gap-2">
                         <MdApartment /> Apartment
@@ -147,7 +145,7 @@ const PaymentHistory = () => {
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
                     >
                       <div className="flex items-center gap-2">
                         <FaCalendarAlt /> Date
@@ -155,7 +153,7 @@ const PaymentHistory = () => {
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
                     >
                       <div className="flex items-center gap-2">
                         <FaMoneyBillWave /> Amount
@@ -163,7 +161,7 @@ const PaymentHistory = () => {
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
                     >
                       <div className="flex items-center gap-2">
                         <FaPercentage /> Discount
@@ -171,7 +169,7 @@ const PaymentHistory = () => {
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
                     >
                       <div className="flex items-center gap-2">
                         <FaTag /> Coupon
@@ -187,10 +185,10 @@ const PaymentHistory = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-base-100 divide-y divide-base-300">
                   {paymentsHistory.length > 0 ? (
                     paymentsHistory.map((payment) => (
-                      <tr key={payment._id} className="hover:bg-gray-50">
+                      <tr key={payment._id} className="hover:bg-base-300">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">
                             <span className="text-primary font-bold">
@@ -259,12 +257,12 @@ const PaymentHistory = () => {
           </div>
 
           {/* Additional Information */}
-          <div className="mt-8 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <MdEmail className="text-indigo-600" />
+          <div className="mt-8 bg-base-100 p-6 rounded-xl shadow-sm border border-base-300">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <MdEmail className="text-accent" />
               Need Help?
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className=" mb-4">
               If you have any questions about your payment history, please
               contact our support team.
             </p>

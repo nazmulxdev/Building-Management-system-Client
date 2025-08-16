@@ -218,7 +218,7 @@ const ManageCoupons = () => {
 
   return (
     <LoadingSpinner isLoading={isLoading}>
-      <div className="p-4 sm:p-6 lg:p-8 bg-base-200 min-h-screen">
+      <div className="p-4 sm:p-6 lg:p-8  min-h-screen bg-gradient-to-br from-base-200 to-base-100">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -294,7 +294,7 @@ const ManageCoupons = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="hover:bg-base-200 transition-colors"
+                      className="hover:bg-base-300 transition-colors"
                     >
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div

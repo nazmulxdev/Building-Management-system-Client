@@ -41,7 +41,7 @@ const Overview = () => {
   });
 
   useEffect(() => {
-    document.title = `Dashboard | ${role?.name}`;
+    document.title = `Dashboard | Admin Overview`;
   }, [role]);
 
   const apartmentStats = data?.apartmentsCount?.[0] || {};

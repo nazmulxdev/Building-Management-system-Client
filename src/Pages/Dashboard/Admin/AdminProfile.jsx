@@ -18,6 +18,10 @@ const AdminProfile = () => {
     }
   }, [currentUser]);
 
+  useEffect(() => {
+    document.title = `Dashboard | ${role?.name}`;
+  }, [role]);
+
   if (loading || roleLoading) {
     return (
       <motion.div

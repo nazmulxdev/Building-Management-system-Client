@@ -40,7 +40,7 @@ const UserProfile = () => {
             <FaUser className="text-2xl" />
             <span>My Profile</span>
           </h1>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm  mt-1">
             View your account and apartment information
           </p>
         </div>
@@ -53,9 +53,9 @@ const UserProfile = () => {
       {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Profile Card */}
-        <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-base-300 overflow-hidden">
+        <div className="lg:col-span-2 bg-base-100 rounded-xl shadow-sm border border-base-300 overflow-hidden">
           <div className="p-6">
-            <h2 className="text-xl font-semibold flex items-center gap-2 mb-4 text-gray-700">
+            <h2 className="text-xl font-semibold flex items-center gap-2 mb-4 ">
               <FaUser className="text-primary" />
               Personal Information
             </h2>
@@ -77,10 +77,10 @@ const UserProfile = () => {
 
               <div className="space-y-3 flex-1">
                 <div>
-                  <p className="text-lg font-bold text-gray-800">
+                  <p className="text-lg font-bold ">
                     {data?.name || "No Name"}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm ">
                     {data?.email || currentUser?.email}
                   </p>
                 </div>
@@ -118,16 +118,16 @@ const UserProfile = () => {
         </div>
 
         {/* Apartment Status Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="bg-base-100 rounded-xl shadow-sm border border-base-300 overflow-hidden">
           <div className="p-6">
-            <h2 className="text-xl font-semibold flex items-center gap-2 mb-4 text-gray-700">
+            <h2 className="text-xl font-semibold flex items-center gap-2 mb-4 ">
               <FaBuilding className="text-primary" />
               Apartment Information
             </h2>
 
             <div className="space-y-4">
               {/* Status Indicator */}
-              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <div className="flex items-center gap-3 p-3 bg-base-100 rounded-lg border border-base-300">
                 <div className="p-2 bg-primary/10 rounded-full">
                   <FaFileSignature className="text-primary" />
                 </div>
@@ -191,7 +191,7 @@ const UserProfile = () => {
               </div>
 
               <div className="mt-4 text-center">
-                <p className="text-xs text-black">
+                <p className="text-xs ">
                   Apply for an apartment to{" "}
                   <Link className="text-primary" to="/apartment">
                     see details here
@@ -204,13 +204,11 @@ const UserProfile = () => {
       </div>
 
       {/* Additional Info Section */}
-      <div className="mt-6 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="mt-6 bg-base-100 rounded-xl shadow-sm border border-base-300 overflow-hidden">
         <div className="p-6">
-          <h2 className="text-xl font-semibold mb-4 text-gray-700">
-            Account Activity
-          </h2>
+          <h2 className="text-xl font-semibold mb-4 ">Account Activity</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="flex items-center gap-3 p-3 bg-base-100 rounded-lg border border-base-300">
               <div className="p-2 bg-primary/10 rounded-full">
                 <FaCalendarAlt className="text-primary" />
               </div>
@@ -223,7 +221,7 @@ const UserProfile = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="flex items-center gap-3 p-3 bg-base-100 rounded-lg border border-base-300">
               <div className="p-2 bg-primary/10 rounded-full">
                 <FaEnvelope className="text-primary" />
               </div>

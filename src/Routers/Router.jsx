@@ -24,6 +24,7 @@ import AdminRoutes from "../Routes/AdminRoutes";
 import MembersRoutes from "../Routes/MembersRoutes";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import BlogPage from "../Pages/Blogs/BlogPage";
+import Overview from "../Pages/Dashboard/Admin/Overview";
 
 const Router = createBrowserRouter([
   {
@@ -109,6 +110,14 @@ const Router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <ManageMembers></ManageMembers>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/overview",
+        element: (
+          <AdminRoutes>
+            <Overview></Overview>
           </AdminRoutes>
         ),
       },

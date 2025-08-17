@@ -15,6 +15,7 @@ import {
 import useRole from "../Hooks/useRole";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import ThemeToggleButton from "../Utilities/ThemeToggleButton";
+import { MdDashboard } from "react-icons/md";
 
 const Dashboard = () => {
   const { data: role, roleLoading } = useRole();
@@ -106,6 +107,17 @@ const Dashboard = () => {
         >
           <FaUserShield className="text-lg" />
           <span>Admin Profile</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/overview"
+          end
+          onClick={closeDrawer}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <MdDashboard className="text-lg" />
+          <span>Overview</span>
         </NavLink>
       </li>
       <li>
